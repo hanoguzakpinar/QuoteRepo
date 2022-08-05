@@ -11,26 +11,17 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class GetAllCountriesQueryHandler : IRequestHandler<GetAllCountriesQueryRequest, IDataResult<IList<CountryDto>>>
     {
-        private readonly IRepository<Country> repository;
-        private readonly ICountryService countryService;
-        private readonly IMapper mapper;
-        //private readonly QuoteContext context;
+        private readonly ICountryService _countryService;
 
-        public GetAllCountriesQueryHandler(IRepository<Country> repository, IMapper mapper, ICountryService countryService/*, QuoteContext context*/)
+        public GetAllCountriesQueryHandler(ICountryService countryService)
         {
-            this.repository = repository;
-            this.mapper = mapper;
-            this.countryService = countryService;
-            //this.context = context;
+            _countryService = countryService;
         }
 
         public async Task<IDataResult<IList<CountryDto>>> Handle(GetAllCountriesQueryRequest request, CancellationToken cancellationToken)
         {
-            var countries = await countryService.GetAllAsync();
+            var countries = await _countryService.GetAllAsync();
             return countries.ResultStatus == ResultStatus.Error ? new DataResult<IList<CountryDto>>(ResultStatus.Error, message: countries.Message) : new DataResult<IList<CountryDto>>(data: countries.Data);
-
-            /*var countries = await context.Countries.Include(c=>c.Authors).ThenInclude(x=> x.Quotes).ToListAsync();
-            return mapper.Map<List<CountryDto>>(countries);*/ //include theninclude örneği
         }
     }
 }

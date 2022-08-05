@@ -10,49 +10,38 @@ namespace QuoteRepo.API.Controllers
     [ApiController]
     public class CountriesController : ControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
         public CountriesController(IMediator mediator)
         {
-            this.mediator = mediator;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await mediator.Send(new GetAllCountriesQueryRequest());
+            var result = await _mediator.Send(new GetAllCountriesQueryRequest());
+
             if (result.ResultStatus == ResultStatus.Error)
             {
                 return BadRequest(result.Message);
             }
+
             return Ok(result.Data);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateCountryCommandRequest request)
-        {
-            /*CreateCountryCommandValidator validator = new CreateCountryCommandValidator();
-            validator.ValidateAndThrow(request);*/
-
-            if (!ModelState.IsValid)//fluentValidation Dependency - Otomatik araya giriyor, hatayı fırlatıyor.
-            {
-                return BadRequest(ModelState);
-            }
-            await mediator.Send(request);
-            return Created("", request);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             GetCountryQueryRequest request = new(id);
-            var result = await mediator.Send(request);
+            var result = await _mediator.Send(request);
 
             if (result.ResultStatus == ResultStatus.Success)
             {
                 return Ok(result.Data);
             }
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage), Message = result.Message }) : BadRequest(new { ResultStatus=result.ResultStatus.ToString(), Message = result.Message });
+
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage), Message = result.Message }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
 
         [HttpDelete("{id}")]
@@ -66,8 +55,22 @@ namespace QuoteRepo.API.Controllers
                 return BadRequest(new { Count = result.Errors.Count, ErrorMessages = result.Errors.Select(x => x.ErrorMessage) });
             }//handler a taşınabilir.
 
-            var _result = await mediator.Send(request);
+            var _result = await _mediator.Send(request);
             return Ok(_result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCountryCommandRequest request)
+        {
+            /*CreateCountryCommandValidator validator = new CreateCountryCommandValidator();
+            validator.ValidateAndThrow(request);*/
+
+            if (!ModelState.IsValid)//fluentValidation Dependency - Otomatik araya giriyor, hatayı fırlatıyor.
+            {
+                return BadRequest(ModelState);
+            }
+            await _mediator.Send(request);
+            return Created("", request);
         }
     }
 }

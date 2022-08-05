@@ -24,7 +24,7 @@ namespace QuoteRepo.Shared.Results
             ResultStatus = resultStatus;
             Data = data;
         }
-        public DataResult(ResultStatus resultStatus, string message)
+        public DataResult(ResultStatus resultStatus, string? message)
         {
             ResultStatus = resultStatus;
             Message = message;
