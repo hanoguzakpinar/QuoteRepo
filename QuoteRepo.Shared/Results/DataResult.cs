@@ -4,7 +4,6 @@ namespace QuoteRepo.Shared.Results
 {
     public class DataResult<T> : IDataResult<T>
     {
-        private ResultStatus error;
 
         public DataResult()
         {
@@ -25,6 +24,11 @@ namespace QuoteRepo.Shared.Results
             ResultStatus = resultStatus;
             Data = data;
         }
+        public DataResult(ResultStatus resultStatus, string message)
+        {
+            ResultStatus = resultStatus;
+            Message = message;
+        }
         public DataResult(ResultStatus resultStatus, string message, T data)
         {
             ResultStatus = resultStatus;
@@ -42,12 +46,6 @@ namespace QuoteRepo.Shared.Results
         {
             ResultStatus = resultStatus;
             Errors = errors;
-        }
-
-        public DataResult(ResultStatus error, string message)
-        {
-            this.error = error;
-            Message = message;
         }
 
         public ResultStatus ResultStatus { get; }

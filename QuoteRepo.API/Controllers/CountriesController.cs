@@ -47,11 +47,12 @@ namespace QuoteRepo.API.Controllers
         {
             GetCountryQueryRequest request = new(id);
             var result = await mediator.Send(request);
+
             if (result.ResultStatus == ResultStatus.Success)
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result);
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage), Message = result.Message }) : BadRequest(new { ResultStatus=result.ResultStatus.ToString(), Message = result.Message });
         }
 
         [HttpDelete("{id}")]

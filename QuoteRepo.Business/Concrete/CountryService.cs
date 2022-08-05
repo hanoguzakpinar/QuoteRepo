@@ -21,21 +21,15 @@ namespace QuoteRepo.Business.Concrete
         public async Task<IDataResult<IList<CountryDto>>> GetAllAsync()
         {
             var countries = await _repository.GetAllAsync();
-            if (countries is null) return new DataResult<IList<CountryDto>>(ResultStatus.Error, "Ülkeler bulunamadı.", null);
-            return new DataResult<IList<CountryDto>>(ResultStatus.Success, _mapper.Map<IList<CountryDto>>(countries));
+            return countries is null ? new DataResult<IList<CountryDto>>(ResultStatus.Error, "Ülkeler bulunamadı.", null) : new DataResult<IList<CountryDto>>(ResultStatus.Success, _mapper.Map<IList<CountryDto>>(countries));
         }
 
         public async Task<IDataResult<CountryDto>> GetAsync(int id)
         {
             var country = await _repository.GetAsync(c => c.Id == id);
-            if (country == null)
-            {
-                return new DataResult<CountryDto>(ResultStatus.Error, "Ülke bulunamadı.");
-            }//burada success dönüyor?
-            else
-            {
-                return new DataResult<CountryDto>(ResultStatus.Success, _mapper.Map<CountryDto>(country));
-            }
+            return country is null
+                ? new DataResult<CountryDto>(ResultStatus.Error, "Ülke bulunamadı.") :
+                  new DataResult<CountryDto>(ResultStatus.Success, _mapper.Map<CountryDto>(country));
         }
     }
 }

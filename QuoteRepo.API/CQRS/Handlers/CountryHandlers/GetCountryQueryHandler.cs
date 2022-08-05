@@ -27,11 +27,9 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
             GetCountryQueryValidator validator = new();
             var valResult = validator.Validate(request);
             if (valResult.Errors.Count > 0)
-            {
                 return new DataResult<CountryDto>(ResultStatus.Error, errors: valResult.Errors);
-            }
-            var result = await countryService.GetAsync(request.Id);
-            return result;
+
+            return await countryService.GetAsync(request.Id);
         }
     }
 }

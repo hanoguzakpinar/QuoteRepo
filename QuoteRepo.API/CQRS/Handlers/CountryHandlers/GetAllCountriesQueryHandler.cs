@@ -27,12 +27,7 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
         public async Task<IDataResult<IList<CountryDto>>> Handle(GetAllCountriesQueryRequest request, CancellationToken cancellationToken)
         {
             var countries = await countryService.GetAllAsync();
-            if (countries.ResultStatus == ResultStatus.Error)
-            {
-                return new DataResult<IList<CountryDto>>(ResultStatus.Error, message: countries.Message);
-            }
-
-            return new DataResult<IList<CountryDto>>(data: countries.Data);
+            return countries.ResultStatus == ResultStatus.Error ? new DataResult<IList<CountryDto>>(ResultStatus.Error, message: countries.Message) : new DataResult<IList<CountryDto>>(data: countries.Data);
 
             /*var countries = await context.Countries.Include(c=>c.Authors).ThenInclude(x=> x.Quotes).ToListAsync();
             return mapper.Map<List<CountryDto>>(countries);*/ //include theninclude örneği
