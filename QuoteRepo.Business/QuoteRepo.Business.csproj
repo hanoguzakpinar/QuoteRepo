@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuoteRepo.Data\QuoteRepo.Data.csproj" />
+    <ProjectReference Include="..\QuoteRepo.Shared\QuoteRepo.Shared.csproj" />
   </ItemGroup>
 
 </Project>

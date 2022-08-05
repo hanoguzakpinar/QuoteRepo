@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation.Results;
 
 namespace QuoteRepo.Shared.Results
 {
     public class DataResult<T> : IDataResult<T>
     {
+        private ResultStatus error;
+
         public DataResult()
         {
-            Errors = new List<ValidationResult>();
+            Errors = new List<ValidationFailure>();
         }
         public DataResult(T data)
         {
             Data = data;
         }
+
+        public DataResult(string? message)
+        {
+            Message = message;
+        }
+
         public DataResult(ResultStatus resultStatus, T data)
         {
             ResultStatus = resultStatus;
@@ -28,17 +31,28 @@ namespace QuoteRepo.Shared.Results
             Data = data;
             Message = message;
         }
-        public DataResult(ResultStatus resultStatus, int errorCount, List<ValidationResult> errors, T data)
+        public DataResult(ResultStatus resultStatus, List<ValidationFailure> errors, T data)
         {
             ResultStatus = resultStatus;
-            ErrorCount = errorCount;
             Errors = errors;
             Data = data;
         }
+
+        public DataResult(ResultStatus resultStatus, List<ValidationFailure> errors)
+        {
+            ResultStatus = resultStatus;
+            Errors = errors;
+        }
+
+        public DataResult(ResultStatus error, string message)
+        {
+            this.error = error;
+            Message = message;
+        }
+
         public ResultStatus ResultStatus { get; }
         public string? Message { get; }
-        public int ErrorCount { get; set; }
-        public List<ValidationResult> Errors { get; set; }
+        public List<ValidationFailure> Errors { get; set; }
         public T Data { get; }
     }
 }

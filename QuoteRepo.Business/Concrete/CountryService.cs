@@ -3,6 +3,7 @@ using QuoteRepo.Business.Abstract;
 using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Entities.Core;
 using QuoteRepo.Entities.Dtos;
+using QuoteRepo.Shared.Results;
 
 namespace QuoteRepo.Business.Concrete
 {
@@ -17,16 +18,24 @@ namespace QuoteRepo.Business.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IList<CountryDto>> GetAllAsync()
+        public async Task<IDataResult<IList<CountryDto>>> GetAllAsync()
         {
             var countries = await _repository.GetAllAsync();
-            return _mapper.Map<IList<CountryDto>>(countries);
+            if (countries is null) return new DataResult<IList<CountryDto>>(ResultStatus.Error, "Ülkeler bulunamadı.", null);
+            return new DataResult<IList<CountryDto>>(ResultStatus.Success, _mapper.Map<IList<CountryDto>>(countries));
         }
 
-        public async Task<CountryDto> GetAsync(int id)
+        public async Task<IDataResult<CountryDto>> GetAsync(int id)
         {
             var country = await _repository.GetAsync(c => c.Id == id);
-            return _mapper.Map<CountryDto>(country);
+            if (country == null)
+            {
+                return new DataResult<CountryDto>(ResultStatus.Error, "Ülke bulunamadı.");
+            }//burada success dönüyor?
+            else
+            {
+                return new DataResult<CountryDto>(ResultStatus.Success, _mapper.Map<CountryDto>(country));
+            }
         }
     }
 }

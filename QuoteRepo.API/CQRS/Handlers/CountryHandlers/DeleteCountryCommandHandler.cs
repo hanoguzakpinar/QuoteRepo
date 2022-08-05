@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Entities.Core;
@@ -19,7 +18,7 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
         public async Task<Result> Handle(DeleteCountryCommandRequest request, CancellationToken cancellationToken)
         {
             var country = await repository.GetAsync(c => c.Id == request.Id);
-            if (country == null) return new Result("Country bulunamadı.");
+            if (country == null) return new Result(message: "Country bulunamadı.");
 
             await repository.DeleteAsync(country);
             return new Result($"{request.Id}idli country başarıyla silindi.");

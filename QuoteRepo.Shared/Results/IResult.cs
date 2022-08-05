@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation.Results;
 
 namespace QuoteRepo.Shared.Results
 {
@@ -11,7 +6,6 @@ namespace QuoteRepo.Shared.Results
     {
         public ResultStatus ResultStatus { get; }
         public string? Message { get; }
-        public int ErrorCount { get; set; }
-        public List<ValidationResult> Errors { get; set; }
+        public List<ValidationFailure> Errors { get; set; }
     }
 }

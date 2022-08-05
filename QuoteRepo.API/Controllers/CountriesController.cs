@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.API.CQRS.Queries.CountryQueries;
+using QuoteRepo.Shared.Results;
 
 namespace QuoteRepo.API.Controllers
 {
@@ -19,9 +20,12 @@ namespace QuoteRepo.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var countries = await mediator.Send(new GetAllCountriesQueryRequest());
-            if (countries is null) return NotFound();
-            return Ok(countries);
+            var result = await mediator.Send(new GetAllCountriesQueryRequest());
+            if (result.ResultStatus == ResultStatus.Error)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Data);
         }
 
         [HttpPost]
@@ -42,14 +46,12 @@ namespace QuoteRepo.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             GetCountryQueryRequest request = new(id);
-            GetCountryQueryValidator validator = new();
-            var result = validator.Validate(request);
-            if (result.Errors.Count > 0)
+            var result = await mediator.Send(request);
+            if (result.ResultStatus == ResultStatus.Success)
             {
-                return BadRequest(new { Count = result.Errors.Count, ErrorMessages = result.Errors.Select(x => x.ErrorMessage) });
-            }//handler a taşınabilir.
-            var country = await mediator.Send(request);
-            return country == null ? NotFound() : Ok(country);
+                return Ok(result.Data);
+            }
+            return BadRequest(result);
         }
 
         [HttpDelete("{id}")]

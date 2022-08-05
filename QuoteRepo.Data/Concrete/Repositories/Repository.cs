@@ -65,10 +65,7 @@ namespace QuoteRepo.Data.Concrete.Repositories
                     query = query.Include(prop);
                 }
             }
-
-#pragma warning disable CS8603 // Possible null reference return.
             return await query.SingleOrDefaultAsync();
-#pragma warning restore CS8603 // Possible null reference return.
         }
 
         public async Task<T> UpdateAsync(T entity)
