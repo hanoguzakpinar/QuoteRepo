@@ -7,35 +7,38 @@ using System.Threading.Tasks;
 
 namespace QuoteRepo.Shared.Results
 {
-    public class Result : IResult
+    public class DataResult<T> : IDataResult<T>
     {
-        public Result()
+        public DataResult()
         {
             Errors = new List<ValidationResult>();
         }
-        public Result(ResultStatus resultStatus)
+        public DataResult(T data)
         {
-            ResultStatus = resultStatus;
+            Data = data;
         }
-        public Result(ResultStatus resultStatus, string message)
+        public DataResult(ResultStatus resultStatus, T data)
         {
             ResultStatus = resultStatus;
+            Data = data;
+        }
+        public DataResult(ResultStatus resultStatus, string message, T data)
+        {
+            ResultStatus = resultStatus;
+            Data = data;
             Message = message;
         }
-        public Result(ResultStatus resultStatus, int errorCount, List<ValidationResult> errors)
+        public DataResult(ResultStatus resultStatus, int errorCount, List<ValidationResult> errors, T data)
         {
             ResultStatus = resultStatus;
             ErrorCount = errorCount;
             Errors = errors;
-        }
-        public Result(int errorCount, List<ValidationResult> errors)
-        {
-            ErrorCount = errorCount;
-            Errors = errors;
+            Data = data;
         }
         public ResultStatus ResultStatus { get; }
         public string? Message { get; }
         public int ErrorCount { get; set; }
         public List<ValidationResult> Errors { get; set; }
+        public T Data { get; }
     }
 }
