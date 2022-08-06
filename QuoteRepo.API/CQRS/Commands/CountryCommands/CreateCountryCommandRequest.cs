@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using IResult = QuoteRepo.Shared.Results.IResult;
 
 namespace QuoteRepo.API.CQRS.Commands.CountryCommands
 {

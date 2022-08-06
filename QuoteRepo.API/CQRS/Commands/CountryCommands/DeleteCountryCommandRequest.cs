@@ -1,7 +1,4 @@
 ﻿using MediatR;
-using QuoteRepo.Entities.Dtos;
-using QuoteRepo.Shared.Results;
-using IResult = QuoteRepo.Shared.Results.IResult;
 
 namespace QuoteRepo.API.CQRS.Commands.CountryCommands
 {

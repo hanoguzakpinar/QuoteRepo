@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using QuoteRepo.API.CQRS.Queries.CountryQueries;
 using QuoteRepo.Business.Abstract;
-using QuoteRepo.Data.Abstract.Repositories;
-using QuoteRepo.Entities.Core;
 using QuoteRepo.Entities.Dtos;
 using QuoteRepo.Shared.Results;
 

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using QuoteRepo.API.CQRS.Queries.CountryQueries;
 using QuoteRepo.Business.Abstract;
 using QuoteRepo.Entities.Dtos;

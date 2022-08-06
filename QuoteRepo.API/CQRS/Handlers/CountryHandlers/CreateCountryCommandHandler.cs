@@ -1,11 +1,9 @@
-﻿using MediatR;
+﻿global using IResult = QuoteRepo.Shared.Results.IResult;
+using MediatR;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.Business.Abstract;
-using QuoteRepo.Data.Abstract.Repositories;
-using QuoteRepo.Entities.Core;
 using QuoteRepo.Entities.Dtos;
 using QuoteRepo.Shared.Results;
-using IResult = QuoteRepo.Shared.Results.IResult;
 
 namespace QuoteRepo.API.CQRS.CountryHandlers
 {
