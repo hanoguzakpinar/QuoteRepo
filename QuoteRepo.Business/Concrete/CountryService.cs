@@ -32,9 +32,10 @@ namespace QuoteRepo.Business.Concrete
                   new DataResult<CountryDto>(ResultStatus.Success, _mapper.Map<CountryDto>(country));
         }
 
-        public Task<IResult> CreateAsync(CountryDto entity)
+        public async Task<IResult> CreateAsync(CountryDto entity)
         {
-            throw new NotImplementedException();
+            await _repository.AddAsync(_mapper.Map<Country>(entity));
+            return new Result(ResultStatus.Success, $"{entity.Name} eklendi.");
         }
 
         public async Task<IResult> DeleteAsync(int id)

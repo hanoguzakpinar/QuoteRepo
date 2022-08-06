@@ -1,23 +1,31 @@
 ﻿using MediatR;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
+using QuoteRepo.Business.Abstract;
 using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Entities.Core;
+using QuoteRepo.Entities.Dtos;
+using QuoteRepo.Shared.Results;
+using IResult = QuoteRepo.Shared.Results.IResult;
 
 namespace QuoteRepo.API.CQRS.CountryHandlers
 {
-    public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommandRequest>
+    public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommandRequest, IResult>
     {
-        private readonly IRepository<Country> repository;
+        private readonly ICountryService _countryService;
 
-        public CreateCountryCommandHandler(IRepository<Country> repository)
+        public CreateCountryCommandHandler(ICountryService countryService)
         {
-            this.repository = repository;
+            _countryService = countryService;
         }
 
-        public async Task<Unit> Handle(CreateCountryCommandRequest request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(CreateCountryCommandRequest request, CancellationToken cancellationToken)
         {
-            await repository.AddAsync(new Country { Name = request.Name });
-            return Unit.Value;
+            CreateCountryCommandValidator validator = new();
+            var valResult = await validator.ValidateAsync(request, cancellationToken);
+            if (valResult.Errors.Count > 0)
+                return new Result(ResultStatus.Error, errors: valResult.Errors);
+
+            return await _countryService.CreateAsync(new CountryDto { Name = request.Name });
         }
     }
 }

@@ -20,8 +20,7 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 
         public async Task<IDataResult<IList<CountryDto>>> Handle(GetAllCountriesQueryRequest request, CancellationToken cancellationToken)
         {
-            var countries = await _countryService.GetAllAsync();
-            return countries;
+            return await _countryService.GetAllAsync();
         }
     }
 }

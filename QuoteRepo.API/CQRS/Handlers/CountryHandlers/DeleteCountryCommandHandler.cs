@@ -25,8 +25,7 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
             if (valResult.Errors.Count > 0)
                 return new Result(ResultStatus.Error, errors: valResult.Errors);
 
-            var result = await _countryService.DeleteAsync(request.Id);
-            return result;
+            return await _countryService.DeleteAsync(request.Id);
         }
     }
 }

@@ -33,8 +33,7 @@ namespace QuoteRepo.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            GetCountryQueryRequest request = new(id);
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetCountryQueryRequest(id));
 
             if (result.ResultStatus == ResultStatus.Success)
             {
@@ -47,9 +46,7 @@ namespace QuoteRepo.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            DeleteCountryCommandRequest request = new(id);
-
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new DeleteCountryCommandRequest(id));
             if (result.ResultStatus == ResultStatus.Success)
             {
                 return Ok(result);
@@ -60,8 +57,12 @@ namespace QuoteRepo.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCountryCommandRequest request)
         {
-            await _mediator.Send(request);
-            return Created("", request);
+            var result = await _mediator.Send(request);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Created("", result);
+            }
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
     }
 }
