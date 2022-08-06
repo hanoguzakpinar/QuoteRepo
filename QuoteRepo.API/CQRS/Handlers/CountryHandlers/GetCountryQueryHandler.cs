@@ -1,9 +1,4 @@
-﻿using QuoteRepo.API.CQRS.Queries.CountryQueries;
-using QuoteRepo.Business.Abstract;
-using QuoteRepo.Entities.Dtos;
-using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class GetCountryQueryHandler : IRequestHandler<GetCountryQueryRequest, IDataResult<CountryDto>>
     {

@@ -1,10 +1,4 @@
-﻿global using IResult = QuoteRepo.Shared.Results.IResult;
-using QuoteRepo.API.CQRS.Commands.CountryCommands;
-using QuoteRepo.Business.Abstract;
-using QuoteRepo.Entities.Dtos;
-using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.API.CQRS.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.CountryHandlers
 {
     public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommandRequest, IResult>
     {

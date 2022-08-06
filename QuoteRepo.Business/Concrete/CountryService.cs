@@ -1,11 +1,4 @@
-﻿global using AutoMapper;
-using QuoteRepo.Business.Abstract;
-using QuoteRepo.Data.Abstract.Repositories;
-using QuoteRepo.Entities.Core;
-using QuoteRepo.Entities.Dtos;
-using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.Business.Concrete
+﻿namespace QuoteRepo.Business.Concrete
 {
     public class CountryService : ICountryService
     {

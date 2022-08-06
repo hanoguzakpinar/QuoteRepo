@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace QuoteRepo.API.CQRS.Queries.CountryQueries
+﻿namespace QuoteRepo.API.CQRS.Queries.CountryQueries
 {
     public class GetCountryQueryValidator : AbstractValidator<GetCountryQueryRequest>
     {

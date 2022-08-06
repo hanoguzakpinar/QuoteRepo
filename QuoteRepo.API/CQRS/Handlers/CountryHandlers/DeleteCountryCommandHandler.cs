@@ -1,8 +1,4 @@
-﻿using QuoteRepo.API.CQRS.Commands.CountryCommands;
-using QuoteRepo.Business.Abstract;
-using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IResult>
     {

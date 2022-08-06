@@ -1,10 +1,4 @@
-﻿global using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using QuoteRepo.API.CQRS.Commands.CountryCommands;
-using QuoteRepo.API.CQRS.Queries.CountryQueries;
-using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.API.Controllers
+﻿namespace QuoteRepo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

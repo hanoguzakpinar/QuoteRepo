@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace QuoteRepo.API.CQRS.Commands.CountryCommands
+﻿namespace QuoteRepo.API.CQRS.Commands.CountryCommands
 {
     public class CreateCountryCommandValidator : AbstractValidator<CreateCountryCommandRequest>
     {

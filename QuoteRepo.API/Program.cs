@@ -1,14 +1,3 @@
-using AutoMapper;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
-using QuoteRepo.Business.Abstract;
-using QuoteRepo.Business.Concrete;
-using QuoteRepo.Business.Profiles;
-using QuoteRepo.Data.Abstract.Repositories;
-using QuoteRepo.Data.Concrete.Contexts;
-using QuoteRepo.Data.Concrete.Repositories;
-using System.Reflection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
