@@ -31,5 +31,19 @@ namespace QuoteRepo.Business.Concrete
                 ? new DataResult<CountryDto>(ResultStatus.Error, "Ülke bulunamadı.") :
                   new DataResult<CountryDto>(ResultStatus.Success, _mapper.Map<CountryDto>(country));
         }
+
+        public Task<IResult> CreateAsync(CountryDto entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IResult> DeleteAsync(int id)
+        {
+            var country = await _repository.GetAsync(c => c.Id == id);
+            if (country is null) return new Result(ResultStatus.Error, "Ülke bulunamadı.");
+
+            await _repository.DeleteAsync(country);
+            return new Result(ResultStatus.Success, $"{country.Name} silindi.");
+        }
     }
 }

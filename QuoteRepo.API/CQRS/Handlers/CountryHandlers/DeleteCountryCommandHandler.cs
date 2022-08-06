@@ -1,33 +1,32 @@
 ﻿using MediatR;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
+using QuoteRepo.Business.Abstract;
 using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Entities.Core;
 using QuoteRepo.Entities.Dtos;
 using QuoteRepo.Shared.Results;
+using IResult = QuoteRepo.Shared.Results.IResult;
 
 namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
-    public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IDataResult<CountryDto>>
+    public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IResult>
     {
-        private readonly IRepository<Country> repository;
+        private readonly ICountryService _countryService;
 
-        public DeleteCountryCommandHandler(IRepository<Country> repository)
+        public DeleteCountryCommandHandler(ICountryService countryService)
         {
-            this.repository = repository;
+            _countryService = countryService;
         }
 
-        public async Task<IDataResult<CountryDto>> Handle(DeleteCountryCommandRequest request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(DeleteCountryCommandRequest request, CancellationToken cancellationToken)
         {
             DeleteCountryCommandValidator validator = new();
-            var result = await validator.ValidateAsync(request, cancellationToken);
-            if (result.Errors.Count > 0)
-                return new DataResult<CountryDto>(ResultStatus.Error, errors: result.Errors);
+            var valResult = await validator.ValidateAsync(request, cancellationToken);
+            if (valResult.Errors.Count > 0)
+                return new Result(ResultStatus.Error, errors: valResult.Errors);
 
-            var country = await repository.GetAsync(c => c.Id == request.Id);
-            if (country == null) return new DataResult<CountryDto>(ResultStatus.Error, message: "Country bulunamadı.");
-
-            await repository.DeleteAsync(country);
-            return new DataResult<CountryDto>(ResultStatus.Success, $"{request.Id} idli country silindi.");
+            var result = await _countryService.DeleteAsync(request.Id);
+            return result;
         }
     }
 }

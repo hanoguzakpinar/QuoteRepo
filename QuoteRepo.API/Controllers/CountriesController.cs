@@ -60,13 +60,6 @@ namespace QuoteRepo.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCountryCommandRequest request)
         {
-            /*CreateCountryCommandValidator validator = new CreateCountryCommandValidator();
-            validator.ValidateAndThrow(request);*/
-
-            if (!ModelState.IsValid)//fluentValidation Dependency - Otomatik araya giriyor, hatayı fırlatıyor.
-            {
-                return BadRequest(ModelState);
-            }
             await _mediator.Send(request);
             return Created("", request);
         }

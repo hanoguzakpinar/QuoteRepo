@@ -7,5 +7,7 @@ namespace QuoteRepo.Business.Abstract
     {
         Task<IDataResult<IList<CountryDto>>> GetAllAsync();
         Task<IDataResult<CountryDto>> GetAsync(int id);
+        Task<IResult> CreateAsync(CountryDto entity);
+        Task<IResult> DeleteAsync(int id);
     }
 }
