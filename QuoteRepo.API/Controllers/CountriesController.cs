@@ -22,12 +22,12 @@ namespace QuoteRepo.API.Controllers
         {
             var result = await _mediator.Send(new GetAllCountriesQueryRequest());
 
-            if (result.ResultStatus == ResultStatus.Error)
+            if (result.ResultStatus == ResultStatus.Success)
             {
-                return BadRequest(result.Message);
+                return Ok(result.Data);
             }
 
-            return Ok(result.Data);
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
 
         [HttpGet("{id}")]
@@ -41,22 +41,20 @@ namespace QuoteRepo.API.Controllers
                 return Ok(result.Data);
             }
 
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage), Message = result.Message }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             DeleteCountryCommandRequest request = new(id);
-            DeleteCountryCommandValidator validator = new();
-            var result = validator.Validate(request);
-            if (result.Errors.Count > 0)
-            {
-                return BadRequest(new { Count = result.Errors.Count, ErrorMessages = result.Errors.Select(x => x.ErrorMessage) });
-            }//handler a taşınabilir.
 
-            var _result = await _mediator.Send(request);
-            return Ok(_result);
+            var result = await _mediator.Send(request);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
 
         [HttpPost]
