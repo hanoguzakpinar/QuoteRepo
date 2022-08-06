@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿global using AutoMapper;
 using QuoteRepo.Business.Abstract;
 using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Entities.Core;
