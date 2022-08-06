@@ -1,5 +1,4 @@
 ﻿global using IResult = QuoteRepo.Shared.Results.IResult;
-using MediatR;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.Business.Abstract;
 using QuoteRepo.Entities.Dtos;

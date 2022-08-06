@@ -1,6 +1,5 @@
 using AutoMapper;
 using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using QuoteRepo.Business.Abstract;
 using QuoteRepo.Business.Concrete;

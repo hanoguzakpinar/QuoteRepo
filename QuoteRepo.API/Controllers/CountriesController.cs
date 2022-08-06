@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿global using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.API.CQRS.Queries.CountryQueries;

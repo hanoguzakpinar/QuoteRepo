@@ -1,5 +1,4 @@
-﻿using MediatR;
-using QuoteRepo.API.CQRS.Commands.CountryCommands;
+﻿using QuoteRepo.API.CQRS.Commands.CountryCommands;
 using QuoteRepo.Business.Abstract;
 using QuoteRepo.Shared.Results;
 

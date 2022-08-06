@@ -1,5 +1,4 @@
-﻿using MediatR;
-using QuoteRepo.Entities.Dtos;
+﻿using QuoteRepo.Entities.Dtos;
 using QuoteRepo.Shared.Results;
 
 namespace QuoteRepo.API.CQRS.Queries.CountryQueries

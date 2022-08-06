@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace QuoteRepo.API.CQRS.Commands.CountryCommands
+﻿namespace QuoteRepo.API.CQRS.Commands.CountryCommands
 {
     public class DeleteCountryCommandRequest : IRequest<IResult>
     {
