@@ -1,3 +1,5 @@
+using QuoteRepo.API.Profiles;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -29,7 +31,8 @@ builder.Services.AddAutoMapper(opt =>
 {
     opt.AddProfiles(new List<Profile>()
     {
-        new CountryProfile()
+        new CountryProfile(),
+        new CountryProfileApi()
     });
 });
 

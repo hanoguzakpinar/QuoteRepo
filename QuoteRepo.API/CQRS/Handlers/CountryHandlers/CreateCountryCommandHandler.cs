@@ -1,12 +1,14 @@
-﻿namespace QuoteRepo.API.CQRS.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommandRequest, IResult>
     {
         private readonly ICountryService _countryService;
+        private readonly IMapper _mapper;
 
-        public CreateCountryCommandHandler(ICountryService countryService)
+        public CreateCountryCommandHandler(ICountryService countryService, IMapper mapper)
         {
             _countryService = countryService;
+            _mapper = mapper;
         }
 
         public async Task<IResult> Handle(CreateCountryCommandRequest request, CancellationToken cancellationToken)
@@ -16,7 +18,7 @@
             if (valResult.Errors.Count > 0)
                 return new Result(ResultStatus.Error, errors: valResult.Errors);
 
-            return await _countryService.CreateAsync(new CountryDto { Name = request.Name });
+            return await _countryService.CreateAsync(_mapper.Map<CountryDto>(request));
         }
     }
 }
