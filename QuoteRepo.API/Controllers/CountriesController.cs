@@ -58,5 +58,16 @@
             }
             return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCountryCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+        }
     }
 }
