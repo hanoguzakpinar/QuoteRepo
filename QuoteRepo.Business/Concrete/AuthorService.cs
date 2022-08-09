@@ -27,9 +27,10 @@
             return authors is null ? new DataResult<IList<AuthorDto>>(ResultStatus.Error, "Yazarlar bulunamadı.") : new DataResult<IList<AuthorDto>>(ResultStatus.Success, _mapper.Map<IList<AuthorDto>>(authors));
         }
 
-        public Task<IDataResult<AuthorDto>> GetAsync(int id)
+        public async Task<IDataResult<AuthorDto>> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            var author = await _repository.GetAsync(a => a.Id == id);
+            return author is null ? new DataResult<AuthorDto>(ResultStatus.Error, "Yazar bulunamadı.") : new DataResult<AuthorDto>(ResultStatus.Success, _mapper.Map<AuthorDto>(author));
         }
 
         public Task<IResult> UpdateAsync(AuthorDto entity)
