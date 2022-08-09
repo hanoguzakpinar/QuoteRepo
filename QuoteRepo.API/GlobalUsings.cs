@@ -17,3 +17,4 @@ global using QuoteRepo.Entities.Dtos;
 global using QuoteRepo.Shared.Results;
 global using System.Reflection;
 global using IResult = QuoteRepo.Shared.Results.IResult;
+global using QuoteRepo.API.CQRS.Commands.AuthorCommands;

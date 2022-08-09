@@ -16,9 +16,13 @@
             throw new NotImplementedException();
         }
 
-        public Task<IResult> DeleteAsync(int id)
+        public async Task<IResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var author = await _repository.GetAsync(a => a.Id == id);
+            if (author is null) return new Result(ResultStatus.Error, "Yazar bulunamadı.");
+
+            await _repository.DeleteAsync(author);
+            return new Result(ResultStatus.Success, $"{author.FullName} silindi.");
         }
 
         public async Task<IDataResult<IList<AuthorDto>>> GetAllAsync()
