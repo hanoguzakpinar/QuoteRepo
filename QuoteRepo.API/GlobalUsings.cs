@@ -5,6 +5,7 @@ global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using QuoteRepo.API.CQRS.Commands.CountryCommands;
+global using QuoteRepo.API.CQRS.Queries.AuthorQueries;
 global using QuoteRepo.API.CQRS.Queries.CountryQueries;
 global using QuoteRepo.Business.Abstract;
 global using QuoteRepo.Business.Concrete;

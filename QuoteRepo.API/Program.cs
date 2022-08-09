@@ -26,13 +26,15 @@ builder.Services.AddDbContext<QuoteContext>(opt =>
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(opt =>
 {
     opt.AddProfiles(new List<Profile>()
     {
         new CountryProfile(),
-        new CountryProfileApi()
+        new CountryProfileApi(),
+        new AuthorProfile()
     });
 });
 
