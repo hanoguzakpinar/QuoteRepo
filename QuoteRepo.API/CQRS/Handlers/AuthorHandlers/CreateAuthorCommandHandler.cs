@@ -18,12 +18,7 @@
             if (valResult.Errors.Count > 0)
                 return new Result(ResultStatus.Error, errors: valResult.Errors);
 
-            return await _authorService.CreateAsync(new AuthorDto
-            {
-                FullName = request.FullName,
-                BirthDate = request.BirthDate,
-                CountryId = request.CountryId
-            });
+            return await _authorService.CreateAsync(_mapper.Map<CreateAuthorDto>(request));
         }
     }
 }

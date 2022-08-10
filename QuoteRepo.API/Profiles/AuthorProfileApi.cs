@@ -4,7 +4,7 @@
     {
         public AuthorProfileApi()
         {
-            CreateMap<AuthorDto, CreateAuthorCommandRequest>().ReverseMap();
+            CreateMap<CreateAuthorDto, CreateAuthorCommandRequest>().ReverseMap();
         }
     }
 }

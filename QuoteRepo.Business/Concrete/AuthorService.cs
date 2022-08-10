@@ -11,7 +11,7 @@
             _mapper = mapper;
         }
 
-        public async Task<IResult> CreateAsync(AuthorDto entity)
+        public async Task<IResult> CreateAsync(CreateAuthorDto entity)
         {
             await _repository.AddAsync(_mapper.Map<Author>(entity));
             return new Result(ResultStatus.Success, $"{entity.FullName} eklendi.");
