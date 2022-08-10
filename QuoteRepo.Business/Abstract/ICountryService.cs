@@ -7,5 +7,6 @@
         Task<IResult> CreateAsync(CountryDto entity);
         Task<IResult> UpdateAsync(CountryDto entity);
         Task<IResult> DeleteAsync(int id);
+        Task<bool> AnyAsync(int id);
     }
 }

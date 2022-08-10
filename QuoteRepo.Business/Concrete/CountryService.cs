@@ -48,5 +48,10 @@
             await _repository.DeleteAsync(country);
             return new Result(ResultStatus.Success, $"{country.Name} silindi.");
         }
+
+        public async Task<bool> AnyAsync(int id)
+        {
+            return await _repository.AnyAsync(c => c.Id == id);
+        }
     }
 }
