@@ -16,7 +16,9 @@ namespace QuoteRepo.Data.Concrete.Repositories
 
         public async Task<T> AddAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);
+            //await _context.Set<T>().AddAsync(entity);
+
+            _context.Entry(entity).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return entity;
         }

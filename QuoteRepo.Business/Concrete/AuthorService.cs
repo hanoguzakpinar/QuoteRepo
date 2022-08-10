@@ -11,9 +11,10 @@
             _mapper = mapper;
         }
 
-        public Task<IResult> CreateAsync(AuthorDto entity)
+        public async Task<IResult> CreateAsync(AuthorDto entity)
         {
-            throw new NotImplementedException();
+            await _repository.AddAsync(_mapper.Map<Author>(entity));
+            return new Result(ResultStatus.Success, $"{entity.FullName} eklendi.");
         }
 
         public async Task<IResult> DeleteAsync(int id)

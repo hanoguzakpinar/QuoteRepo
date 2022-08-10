@@ -34,7 +34,8 @@ builder.Services.AddAutoMapper(opt =>
     {
         new CountryProfile(),
         new CountryProfileApi(),
-        new AuthorProfile()
+        new AuthorProfile(),
+        new AuthorProfileApi()
     });
 });
 

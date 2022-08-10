@@ -49,5 +49,19 @@
 
             return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateAuthorCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResulStatus = result.ResultStatus.ToString(), Message = result.Message });
+        }
+
     }
 }
