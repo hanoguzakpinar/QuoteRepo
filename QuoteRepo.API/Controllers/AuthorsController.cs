@@ -29,7 +29,7 @@
         {
             var result = await _mediator.Send(new GetAuthorQueryRequest(id));
 
-            if (result.ResultStatus == ResultStatus.Success)
+            if (result.ResultStatus == ResultStatus.Error)
             {
                 return Ok(result.Data);
             }
