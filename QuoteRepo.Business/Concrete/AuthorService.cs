@@ -40,8 +40,7 @@
 
         public async Task<IResult> UpdateAsync(UpdateAuthorDto entity)
         {
-            var author = await _repository.AnyAsync(a => a.Id == entity.Id);
-            if (author is false) return new Result(ResultStatus.Error, "Yazar bulunamadı.");
+            if (!await AnyAsync(entity.Id)) return new Result(ResultStatus.Error, "Yazar bulunamadı.");
 
             await _repository.UpdateAsync(_mapper.Map<Author>(entity));
             return new Result(ResultStatus.Success, $"{entity.FullName} güncellendi.");
