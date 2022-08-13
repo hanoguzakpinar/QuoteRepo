@@ -33,8 +33,7 @@
 
         public async Task<IResult> UpdateAsync(CountryDto entity)
         {
-            var country = await _repository.AnyAsync(c => c.Id == entity.Id);
-            if (country is false) return new Result(ResultStatus.Error, "Ülke bulunamadı.");
+            if (!await AnyAsync(entity.Id)) return new Result(ResultStatus.Error, "Ülke bulunamadı.");
 
             await _repository.UpdateAsync(_mapper.Map<Country>(entity));
             return new Result(ResultStatus.Success, $"{entity.Name} güncellendi.");
