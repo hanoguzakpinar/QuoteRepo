@@ -3,16 +3,21 @@
     public class AuthorService : IAuthorService
     {
         private readonly IRepository<Author> _repository;
+        private readonly IRepository<Country> _countryRepository;
         private readonly IMapper _mapper;
 
-        public AuthorService(IRepository<Author> repository, IMapper mapper)
+        public AuthorService(IRepository<Author> repository, IMapper mapper, IRepository<Country> countryRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _countryRepository = countryRepository;
         }
 
         public async Task<IResult> CreateAsync(CreateAuthorDto entity)
         {
+            if (!await _countryRepository.AnyAsync(c => c.Id == entity.CountryId))
+                return new Result(ResultStatus.Error, "CountryId veritabanında kayıtlı değil.");
+
             await _repository.AddAsync(_mapper.Map<Author>(entity));
             return new Result(ResultStatus.Success, $"{entity.FullName} eklendi.");
         }
@@ -41,6 +46,9 @@
         public async Task<IResult> UpdateAsync(UpdateAuthorDto entity)
         {
             if (!await AnyAsync(entity.Id)) return new Result(ResultStatus.Error, "Yazar bulunamadı.");
+
+            if (!await _countryRepository.AnyAsync(c => c.Id == entity.CountryId))
+                return new Result(ResultStatus.Error, "CountryId veritabanında kayıtlı değil.");
 
             await _repository.UpdateAsync(_mapper.Map<Author>(entity));
             return new Result(ResultStatus.Success, $"{entity.FullName} güncellendi.");

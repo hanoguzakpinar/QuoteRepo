@@ -20,9 +20,6 @@
             if (valResult.Errors.Count > 0)
                 return new Result(ResultStatus.Error, errors: valResult.Errors);
 
-            if (!await _countryService.AnyAsync(request.CountryId))
-                return new Result(ResultStatus.Error, "CountryId veritabanında kayıtlı değil.");
-
             return await _authorService.UpdateAsync(_mapper.Map<UpdateAuthorDto>(request));
         }
     }
