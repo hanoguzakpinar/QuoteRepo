@@ -7,5 +7,6 @@
         Task<IResult> CreateAsync(CreateAuthorDto entity);
         Task<IResult> UpdateAsync(UpdateAuthorDto entity);
         Task<IResult> DeleteAsync(int id);
+        Task<bool> AnyAsync(int id);
     }
 }

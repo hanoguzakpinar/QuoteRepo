@@ -46,5 +46,10 @@
             await _repository.UpdateAsync(_mapper.Map<Author>(entity));
             return new Result(ResultStatus.Success, $"{entity.FullName} güncellendi.");
         }
+
+        public async Task<bool> AnyAsync(int id)
+        {
+            return await _repository.AnyAsync(c => c.Id == id);
+        }
     }
 }
