@@ -6,6 +6,7 @@
         {
             CreateMap<Author, AuthorDto>().ReverseMap();
             CreateMap<Author, CreateAuthorDto>().ReverseMap();
+            CreateMap<Author, UpdateAuthorDto>().ReverseMap();
         }
     }
 }

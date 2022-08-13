@@ -38,9 +38,13 @@
             return author is null ? new DataResult<AuthorDto>(ResultStatus.Error, "Yazar bulunamadı.") : new DataResult<AuthorDto>(ResultStatus.Success, _mapper.Map<AuthorDto>(author));
         }
 
-        public Task<IResult> UpdateAsync(AuthorDto entity)
+        public async Task<IResult> UpdateAsync(UpdateAuthorDto entity)
         {
-            throw new NotImplementedException();
+            var author = await _repository.AnyAsync(a => a.Id == entity.Id);
+            if (author is false) return new Result(ResultStatus.Error, "Yazar bulunamadı.");
+
+            await _repository.UpdateAsync(_mapper.Map<Author>(entity));
+            return new Result(ResultStatus.Success, $"{entity.FullName} güncellendi.");
         }
     }
 }

@@ -63,5 +63,17 @@
             return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResulStatus = result.ResultStatus.ToString(), Message = result.Message });
         }
 
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateAuthorCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+
+            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResulStatus = result.ResultStatus.ToString(), Message = result.Message });
+        }
     }
 }
