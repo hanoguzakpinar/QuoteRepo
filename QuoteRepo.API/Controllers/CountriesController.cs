@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.API.Controllers
+﻿using QuoteRepo.Shared.Utils;
+
+namespace QuoteRepo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,7 +23,7 @@
                 return Ok(result.Data);
             }
 
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+            return BadRequest(ReturnErrors.ReturnObjectError(result));
         }
 
         [HttpGet("{id}")]
@@ -34,7 +36,7 @@
                 return Ok(result.Data);
             }
 
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+            return BadRequest(ReturnErrors.ReturnObjectError(result));
         }
 
         [HttpDelete("{id}")]
@@ -45,7 +47,8 @@
             {
                 return Ok(result);
             }
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+
+            return BadRequest(ReturnErrors.ReturnObjectError(result));
         }
 
         [HttpPost]
@@ -56,7 +59,8 @@
             {
                 return Created("", result);
             }
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+
+            return BadRequest(ReturnErrors.ReturnObjectError(result));
         }
 
         [HttpPut]
@@ -67,7 +71,8 @@
             {
                 return Ok(result);
             }
-            return result.Errors is not null ? BadRequest(new { Errors = result.Errors.Select(x => x.ErrorMessage) }) : BadRequest(new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message });
+
+            return BadRequest(ReturnErrors.ReturnObjectError(result));
         }
     }
 }
