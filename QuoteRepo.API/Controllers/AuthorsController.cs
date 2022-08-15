@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Shared.Utils;
-
-namespace QuoteRepo.API.Controllers
+﻿namespace QuoteRepo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -27,6 +27,7 @@ builder.Services.AddDbContext<QuoteContext>(opt =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IQuoteService, QuoteService>();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(opt =>
 {
@@ -35,7 +36,8 @@ builder.Services.AddAutoMapper(opt =>
         new CountryProfile(),
         new CountryProfileApi(),
         new AuthorProfile(),
-        new AuthorProfileApi()
+        new AuthorProfileApi(),
+        new QuoteProfile()
     });
 });
 
