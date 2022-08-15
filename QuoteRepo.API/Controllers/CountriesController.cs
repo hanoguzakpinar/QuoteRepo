@@ -23,7 +23,7 @@ namespace QuoteRepo.API.Controllers
                 return Ok(result.Data);
             }
 
-            return BadRequest(ReturnErrors.ReturnObjectError(result));
+            return BadRequest(Utility.ReturnErrors(result));
         }
 
         [HttpGet("{id}")]
@@ -36,7 +36,7 @@ namespace QuoteRepo.API.Controllers
                 return Ok(result.Data);
             }
 
-            return BadRequest(ReturnErrors.ReturnObjectError(result));
+            return BadRequest(Utility.ReturnErrors(result));
         }
 
         [HttpDelete("{id}")]
@@ -48,7 +48,7 @@ namespace QuoteRepo.API.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(ReturnErrors.ReturnObjectError(result));
+            return BadRequest(Utility.ReturnErrors(result));
         }
 
         [HttpPost]
@@ -60,7 +60,7 @@ namespace QuoteRepo.API.Controllers
                 return Created("", result);
             }
 
-            return BadRequest(ReturnErrors.ReturnObjectError(result));
+            return BadRequest(Utility.ReturnErrors(result));
         }
 
         [HttpPut]
@@ -72,7 +72,7 @@ namespace QuoteRepo.API.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(ReturnErrors.ReturnObjectError(result));
+            return BadRequest(Utility.ReturnErrors(result));
         }
     }
 }

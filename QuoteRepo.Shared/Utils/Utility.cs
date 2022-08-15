@@ -2,9 +2,9 @@
 
 namespace QuoteRepo.Shared.Utils
 {
-    public static class ReturnErrors
+    public static class Utility
     {
-        public static object ReturnObjectError(IResult result)
+        public static object ReturnErrors(IResult result)
         {
             return result.Errors is not null ? new { Errors = result.Errors.Select(x => x.ErrorMessage) } : new { ResultStatus = result.ResultStatus.ToString(), Message = result.Message };
         }
