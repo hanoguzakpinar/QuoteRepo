@@ -3,12 +3,23 @@
     public class QuoteService : IQuoteService
     {
         private readonly IRepository<Quote> _repository;
+        private readonly IRepository<Author> _authorRepository;
         private readonly IMapper _mapper;
 
-        public QuoteService(IRepository<Quote> repository, IMapper mapper)
+        public QuoteService(IRepository<Quote> repository, IMapper mapper, IRepository<Author> authorRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _authorRepository = authorRepository;
+        }
+
+        public async Task<IResult> CreateAsync(CreateQuoteDto entity)
+        {
+            if (!await _authorRepository.AnyAsync(a => a.Id == entity.AuthorId))
+                return new Result(ResultStatus.Error, "AuthorId veritabanında kayıtlı değil.");
+
+            await _repository.AddAsync(_mapper.Map<Quote>(entity));
+            return new Result(ResultStatus.Success, $"Kayıt Başarılı.");
         }
 
         public async Task<IDataResult<IList<QuoteDto>>> GetAllAsync()

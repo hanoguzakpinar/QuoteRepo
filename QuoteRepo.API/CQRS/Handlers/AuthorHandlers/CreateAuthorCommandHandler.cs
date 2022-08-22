@@ -3,14 +3,12 @@
     public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, IResult>
     {
         private readonly IAuthorService _authorService;
-        private readonly ICountryService _countryService;
         private readonly IMapper _mapper;
 
-        public CreateAuthorCommandHandler(IAuthorService authorService, IMapper mapper, ICountryService countryService)
+        public CreateAuthorCommandHandler(IAuthorService authorService, IMapper mapper)
         {
             _authorService = authorService;
             _mapper = mapper;
-            _countryService = countryService;
         }
 
         public async Task<IResult> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)

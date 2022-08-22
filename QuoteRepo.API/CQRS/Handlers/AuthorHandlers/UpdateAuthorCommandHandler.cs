@@ -3,14 +3,12 @@
     public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommandRequest, IResult>
     {
         private readonly IAuthorService _authorService;
-        private readonly ICountryService _countryService;
         private readonly IMapper _mapper;
 
-        public UpdateAuthorCommandHandler(IAuthorService authorService, IMapper mapper, ICountryService countryService)
+        public UpdateAuthorCommandHandler(IAuthorService authorService, IMapper mapper)
         {
             _authorService = authorService;
             _mapper = mapper;
-            _countryService = countryService;
         }
 
         public async Task<IResult> Handle(UpdateAuthorCommandRequest request, CancellationToken cancellationToken)

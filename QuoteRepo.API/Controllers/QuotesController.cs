@@ -36,5 +36,18 @@
 
             return BadRequest(Utility.ReturnErrors(result));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateQuoteCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(Utility.ReturnErrors(result));
+        }
     }
 }
