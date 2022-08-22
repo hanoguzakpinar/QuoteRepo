@@ -23,5 +23,18 @@
 
             return BadRequest(Utility.ReturnErrors(result));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _mediator.Send(new GetQuoteQueryRequest(id));
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result.Data);
+            }
+
+            return BadRequest(Utility.ReturnErrors(result));
+        }
     }
 }
