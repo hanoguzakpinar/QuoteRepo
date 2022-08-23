@@ -33,12 +33,10 @@ builder.Services.AddAutoMapper(opt =>
 {
     opt.AddProfiles(new List<Profile>()
     {
+        new ApiProfile(),
         new CountryProfile(),
-        new CountryProfileApi(),
         new AuthorProfile(),
-        new AuthorProfileApi(),
-        new QuoteProfile(),
-        new QuoteProfileApi()
+        new QuoteProfile()
     });
 });
 
