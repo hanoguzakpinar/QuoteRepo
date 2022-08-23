@@ -49,5 +49,18 @@
 
             return BadRequest(Utility.ReturnErrors(result));
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateQuoteCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(Utility.ReturnErrors(result));
+        }
     }
 }

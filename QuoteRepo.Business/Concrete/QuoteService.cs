@@ -13,6 +13,11 @@
             _authorRepository = authorRepository;
         }
 
+        public async Task<bool> AnyAsync(int id)
+        {
+            return await _repository.AnyAsync(q => q.Id == id);
+        }
+
         public async Task<IResult> CreateAsync(CreateQuoteDto entity)
         {
             if (!await _authorRepository.AnyAsync(a => a.Id == entity.AuthorId))
@@ -20,6 +25,11 @@
 
             await _repository.AddAsync(_mapper.Map<Quote>(entity));
             return new Result(ResultStatus.Success, $"Kayıt Başarılı.");
+        }
+
+        public Task<IResult> DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IDataResult<IList<QuoteDto>>> GetAllAsync()
@@ -32,6 +42,17 @@
         {
             var quote = await _repository.GetAsync(q => q.Id == id);
             return quote is null ? new DataResult<QuoteDto>(ResultStatus.Error, "Alıntı bulunamadı.") : new DataResult<QuoteDto>(ResultStatus.Success, _mapper.Map<QuoteDto>(quote));
+        }
+
+        public async Task<IResult> UpdateAsync(UpdateQuoteDto entity)
+        {
+            if (!await AnyAsync(entity.Id)) return new Result(ResultStatus.Error, "Alıntı bulunamadı.");
+
+            if (!await _authorRepository.AnyAsync(a => a.Id == entity.AuthorId))
+                return new Result(ResultStatus.Error, "AuthorId veritabanında kayıtlı değil.");
+
+            await _repository.UpdateAsync(_mapper.Map<Quote>(entity));
+            return new Result(ResultStatus.Success, $"{entity.Id} güncellendi.");
         }
     }
 }

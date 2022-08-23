@@ -6,6 +6,7 @@
         {
             CreateMap<Quote, QuoteDto>().ReverseMap();
             CreateMap<Quote, CreateQuoteDto>().ReverseMap();
+            CreateMap<Quote, UpdateQuoteDto>().ReverseMap();
         }
     }
 }

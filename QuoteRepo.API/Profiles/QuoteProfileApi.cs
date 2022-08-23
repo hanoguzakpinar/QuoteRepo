@@ -5,6 +5,7 @@
         public QuoteProfileApi()
         {
             CreateMap<CreateQuoteDto, CreateQuoteCommandRequest>().ReverseMap();
+            CreateMap<UpdateQuoteDto, UpdateQuoteCommandRequest>().ReverseMap();
         }
     }
 }

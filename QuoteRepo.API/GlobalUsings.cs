@@ -16,7 +16,6 @@ global using QuoteRepo.Business.Profiles;
 global using QuoteRepo.Data.Abstract.Repositories;
 global using QuoteRepo.Data.Concrete.Contexts;
 global using QuoteRepo.Data.Concrete.Repositories;
-global using QuoteRepo.Entities.Core;
 global using QuoteRepo.Entities.Dtos;
 global using QuoteRepo.Shared.Results;
 global using QuoteRepo.Shared.Utils;
