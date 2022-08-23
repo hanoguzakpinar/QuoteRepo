@@ -6,6 +6,6 @@ namespace QuoteRepo.Shared.Results
     {
         public ResultStatus ResultStatus { get; }
         public string? Message { get; }
-        public List<ValidationFailure> Errors { get; set; }
+        public List<ValidationFailure> Errors { get; }
     }
 }
