@@ -62,5 +62,18 @@
 
             return BadRequest(Utility.ReturnErrors(result));
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(DeleteQuoteCommandRequest request)
+        {
+            var result = await _mediator.Send(request);
+
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(Utility.ReturnErrors(result));
+        }
     }
 }

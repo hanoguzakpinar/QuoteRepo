@@ -27,9 +27,13 @@
             return new Result(ResultStatus.Success, $"Kayıt Başarılı.");
         }
 
-        public Task<IResult> DeleteAsync(int id)
+        public async Task<IResult> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var quote = await _repository.GetAsync(q => q.Id == id);
+            if (quote is null) return new Result(ResultStatus.Error, "Alıntı bulunamadı.");
+
+            await _repository.DeleteAsync(quote);
+            return new Result(ResultStatus.Success, $"{quote.Id} idli alıntı silindi.");
         }
 
         public async Task<IDataResult<IList<QuoteDto>>> GetAllAsync()

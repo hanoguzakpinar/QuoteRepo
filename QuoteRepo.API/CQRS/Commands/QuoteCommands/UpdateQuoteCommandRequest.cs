@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Entities.Core;
-
-namespace QuoteRepo.API.CQRS.Commands.QuoteCommands
+﻿namespace QuoteRepo.API.CQRS.Commands.QuoteCommands
 {
     public class UpdateQuoteCommandRequest : IRequest<IResult>
     {
