@@ -38,13 +38,13 @@
 
         public async Task<IDataResult<IList<QuoteDto>>> GetAllAsync()
         {
-            var quotes = await _repository.GetAllAsync();
+            var quotes = await _repository.GetAllAsync(null, q => q.Author);
             return quotes is null ? new DataResult<IList<QuoteDto>>(ResultStatus.Error, "Alıntılar bulunamadı.") : new DataResult<IList<QuoteDto>>(ResultStatus.Success, _mapper.Map<IList<QuoteDto>>(quotes));
         }
 
         public async Task<IDataResult<QuoteDto>> GetAsync(int id)
         {
-            var quote = await _repository.GetAsync(q => q.Id == id);
+            var quote = await _repository.GetAsync(q => q.Id == id, q => q.Author);
             return quote is null ? new DataResult<QuoteDto>(ResultStatus.Error, "Alıntı bulunamadı.") : new DataResult<QuoteDto>(ResultStatus.Success, _mapper.Map<QuoteDto>(quote));
         }
 
