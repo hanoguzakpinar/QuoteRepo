@@ -4,7 +4,7 @@
     {
         public AuthorProfile()
         {
-            CreateMap<Author, AuthorDto>().ReverseMap();
+            CreateMap<Author, AuthorDto>().ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.Name));
             CreateMap<Author, CreateAuthorDto>().ReverseMap();
             CreateMap<Author, UpdateAuthorDto>().ReverseMap();
         }

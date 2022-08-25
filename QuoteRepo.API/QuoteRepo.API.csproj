@@ -28,4 +28,8 @@
     <ProjectReference Include="..\QuoteRepo.Shared\QuoteRepo.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CQRS\Results\" />
+  </ItemGroup>
+
 </Project>

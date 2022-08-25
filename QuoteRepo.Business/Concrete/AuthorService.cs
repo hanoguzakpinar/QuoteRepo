@@ -33,13 +33,13 @@
 
         public async Task<IDataResult<IList<AuthorDto>>> GetAllAsync()
         {
-            var authors = await _repository.GetAllAsync();
+            var authors = await _repository.GetAllAsync(null, a => a.Country);
             return authors is null ? new DataResult<IList<AuthorDto>>(ResultStatus.Error, "Yazarlar bulunamadı.") : new DataResult<IList<AuthorDto>>(ResultStatus.Success, _mapper.Map<IList<AuthorDto>>(authors));
         }
 
         public async Task<IDataResult<AuthorDto>> GetAsync(int id)
         {
-            var author = await _repository.GetAsync(a => a.Id == id);
+            var author = await _repository.GetAsync(a => a.Id == id, a => a.Country);
             return author is null ? new DataResult<AuthorDto>(ResultStatus.Error, "Yazar bulunamadı.") : new DataResult<AuthorDto>(ResultStatus.Success, _mapper.Map<AuthorDto>(author));
         }
 
