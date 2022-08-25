@@ -1,6 +1,4 @@
-﻿using FluentValidation.Results;
-
-namespace QuoteRepo.Shared.Results
+﻿namespace QuoteRepo.Shared.Results
 {
     public interface IResult
     {

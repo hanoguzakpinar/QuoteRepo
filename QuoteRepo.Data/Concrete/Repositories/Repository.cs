@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QuoteRepo.Data.Abstract.Repositories;
+﻿using QuoteRepo.Data.Abstract.Repositories;
 using QuoteRepo.Data.Concrete.Contexts;
-using System.Linq.Expressions;
 
 namespace QuoteRepo.Data.Concrete.Repositories
 {

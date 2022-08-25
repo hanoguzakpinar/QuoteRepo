@@ -1,6 +1,4 @@
-﻿using FluentValidation.Results;
-
-namespace QuoteRepo.Shared.Results
+﻿namespace QuoteRepo.Shared.Results
 {
     public class Result : IResult
     {
@@ -18,6 +16,6 @@ namespace QuoteRepo.Shared.Results
 
         public ResultStatus ResultStatus { get; }
         public string? Message { get; }
-        public List<ValidationFailure> Errors { get;}
+        public List<ValidationFailure> Errors { get; }
     }
 }

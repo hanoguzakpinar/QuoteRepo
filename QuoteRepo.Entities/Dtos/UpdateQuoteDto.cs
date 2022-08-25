@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Entities.Core;
-
-namespace QuoteRepo.Entities.Dtos
+﻿namespace QuoteRepo.Entities.Dtos
 {
     public class UpdateQuoteDto
     {

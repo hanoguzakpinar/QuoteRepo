@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using QuoteRepo.Entities.Core;
-
-namespace QuoteRepo.Data.Concrete.Mappings
+﻿namespace QuoteRepo.Data.Concrete.Mappings
 {
     public class AppRoleMap : IEntityTypeConfiguration<AppRole>
     {

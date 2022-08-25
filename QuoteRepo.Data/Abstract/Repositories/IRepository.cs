@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace QuoteRepo.Data.Abstract.Repositories
+﻿namespace QuoteRepo.Data.Abstract.Repositories
 {
     public interface IRepository<T> where T : class, new()
     {

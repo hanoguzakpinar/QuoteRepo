@@ -1,4 +1,4 @@
-using QuoteRepo.API.Profiles;
+global using IResult = QuoteRepo.Shared.Results.IResult;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,14 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
+		<Using Include="QuoteRepo.Shared.Results"/>
+		<Using Include="FluentValidation.Results"/>
+	</ItemGroup>
 
 </Project>

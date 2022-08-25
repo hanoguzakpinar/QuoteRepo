@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QuoteRepo.Data.Concrete.Mappings;
-using QuoteRepo.Entities.Core;
+﻿using QuoteRepo.Data.Concrete.Mappings;
 
 namespace QuoteRepo.Data.Concrete.Contexts
 {

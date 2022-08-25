@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Shared.Results;
-
-namespace QuoteRepo.Shared.Utils
+﻿namespace QuoteRepo.Shared.Utils
 {
     public static class Utility
     {
