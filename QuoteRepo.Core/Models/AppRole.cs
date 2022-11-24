@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Entities.Core
+﻿namespace QuoteRepo.Core.Models
 {
     public class AppRole
     {

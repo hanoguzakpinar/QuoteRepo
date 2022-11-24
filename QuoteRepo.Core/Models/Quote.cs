@@ -1,6 +1,6 @@
-﻿namespace QuoteRepo.Entities.Dtos
+﻿namespace QuoteRepo.Core.Models
 {
-    public class UpdateQuoteDto
+    public class Quote
     {
         public int Id { get; set; }
         public string? Text { get; set; }

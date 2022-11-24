@@ -12,8 +12,8 @@ using QuoteRepo.Data.Concrete.Contexts;
 namespace QuoteRepo.Data.Migrations
 {
     [DbContext(typeof(QuoteContext))]
-    [Migration("20220727113544_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221124114757_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace QuoteRepo.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.AppRole", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.AppRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,7 @@ namespace QuoteRepo.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.AppUser", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.AppUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +82,7 @@ namespace QuoteRepo.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Author", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace QuoteRepo.Data.Migrations
                     b.ToTable("Authors", (string)null);
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Country", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -178,7 +178,7 @@ namespace QuoteRepo.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Quote", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Quote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -200,9 +200,9 @@ namespace QuoteRepo.Data.Migrations
                     b.ToTable("Quotes", (string)null);
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.AppUser", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.AppUser", b =>
                 {
-                    b.HasOne("QuoteRepo.Entities.Core.AppRole", "AppRole")
+                    b.HasOne("QuoteRepo.Core.Models.AppRole", "AppRole")
                         .WithMany("AppUsers")
                         .HasForeignKey("AppRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -211,9 +211,9 @@ namespace QuoteRepo.Data.Migrations
                     b.Navigation("AppRole");
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Author", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Author", b =>
                 {
-                    b.HasOne("QuoteRepo.Entities.Core.Country", "Country")
+                    b.HasOne("QuoteRepo.Core.Models.Country", "Country")
                         .WithMany("Authors")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -222,9 +222,9 @@ namespace QuoteRepo.Data.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Quote", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Quote", b =>
                 {
-                    b.HasOne("QuoteRepo.Entities.Core.Author", "Author")
+                    b.HasOne("QuoteRepo.Core.Models.Author", "Author")
                         .WithMany("Quotes")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -233,17 +233,17 @@ namespace QuoteRepo.Data.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.AppRole", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.AppRole", b =>
                 {
                     b.Navigation("AppUsers");
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Author", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Author", b =>
                 {
                     b.Navigation("Quotes");
                 });
 
-            modelBuilder.Entity("QuoteRepo.Entities.Core.Country", b =>
+            modelBuilder.Entity("QuoteRepo.Core.Models.Country", b =>
                 {
                     b.Navigation("Authors");
                 });

@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Entities.Core
+﻿namespace QuoteRepo.Core.Models
 {
     public class AppUser
     {
@@ -7,9 +7,5 @@
         public string? Password { get; set; }
         public int AppRoleId { get; set; }
         public AppRole AppRole { get; set; }
-        public AppUser()
-        {
-            AppRole = new AppRole();
-        }
     }
 }

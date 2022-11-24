@@ -1,11 +1,9 @@
-﻿namespace QuoteRepo.Entities.Dtos
+﻿namespace QuoteRepo.Core.DTOs
 {
-    public class AuthorDto
+    public class AuthorDto : BaseDto
     {
-        public int Id { get; set; }
         public string? FullName { get; set; }
         public DateTime BirthDate { get; set; }
-        //public int CountryId { get; set; }
         public string? Country { get; set; }
     }
 }

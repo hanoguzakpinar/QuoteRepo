@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="CQRS\Results\**" />
+	  <Content Remove="CQRS\Results\**" />
+	  <EmbeddedResource Remove="CQRS\Results\**" />
+	  <None Remove="CQRS\Results\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
@@ -25,34 +32,30 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\QuoteRepo.Business\QuoteRepo.Business.csproj" />
-		<ProjectReference Include="..\QuoteRepo.Shared\QuoteRepo.Shared.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="CQRS\Results\" />
-		<Using Include="AutoMapper"/>
-		<Using Include="FluentValidation"/>
-		<Using Include="FluentValidation.AspNetCore"/>
-		<Using Include="MediatR"/>
-		<Using Include="Microsoft.AspNetCore.Mvc"/>
-		<Using Include="Microsoft.EntityFrameworkCore"/>
-		<Using Include="QuoteRepo.API.CQRS.Commands.AuthorCommands"/>
-		<Using Include="QuoteRepo.API.CQRS.Commands.CountryCommands"/>
-		<Using Include="QuoteRepo.API.CQRS.Commands.QuoteCommands"/>
-		<Using Include="QuoteRepo.API.CQRS.Queries.AuthorQueries"/>
-		<Using Include="QuoteRepo.API.CQRS.Queries.CountryQueries"/>
-		<Using Include="QuoteRepo.API.CQRS.Queries.QuoteQueries"/>
-		<Using Include="QuoteRepo.Business.Abstract"/>
-		<Using Include="QuoteRepo.Business.Concrete"/>
-		<Using Include="QuoteRepo.Business.Profiles"/>
-		<Using Include="QuoteRepo.Data.Abstract.Repositories"/>
-		<Using Include="QuoteRepo.Data.Concrete.Contexts"/>
-		<Using Include="QuoteRepo.Data.Concrete.Repositories"/>
-		<Using Include="QuoteRepo.Entities.Dtos"/>
-		<Using Include="QuoteRepo.Shared.Results"/>
-		<Using Include="QuoteRepo.Shared.Utils"/>
-		<Using Include="System.Reflection"/>
-		<Using Include="QuoteRepo.API.Profiles"/>
+		<Using Include="AutoMapper" />
+		<Using Include="FluentValidation" />
+		<Using Include="FluentValidation.AspNetCore" />
+		<Using Include="MediatR" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="QuoteRepo.API.CQRS.Commands.AuthorCommands" />
+		<Using Include="QuoteRepo.API.CQRS.Commands.CountryCommands" />
+		<Using Include="QuoteRepo.API.CQRS.Commands.QuoteCommands" />
+		<Using Include="QuoteRepo.API.CQRS.Queries.AuthorQueries" />
+		<Using Include="QuoteRepo.API.CQRS.Queries.CountryQueries" />
+		<Using Include="QuoteRepo.API.CQRS.Queries.QuoteQueries" />
+		<Using Include="QuoteRepo.Business.Abstract" />
+		<Using Include="QuoteRepo.Business.Concrete" />
+		<Using Include="QuoteRepo.Business.Profiles" />
+		<Using Include="QuoteRepo.Core.DTOs" />
+		<Using Include="QuoteRepo.Core.Models" />
+		<Using Include="QuoteRepo.Data.Abstract.Repositories" />
+		<Using Include="QuoteRepo.Data.Concrete.Contexts" />
+		<Using Include="QuoteRepo.Data.Concrete.Repositories" />
+		<Using Include="QuoteRepo.Shared.Results" />
+		<Using Include="QuoteRepo.Shared.Utils" />
+		<Using Include="System.Reflection" />
+		<Using Include="QuoteRepo.API.Profiles" />
 	</ItemGroup>
 
 </Project>

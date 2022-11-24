@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.Data.Concrete.Mappings
+﻿using QuoteRepo.Core.Models;
+
+namespace QuoteRepo.Data.Concrete.Mappings
 {
     public class AuthorMap : IEntityTypeConfiguration<Author>
     {

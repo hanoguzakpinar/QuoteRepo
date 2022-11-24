@@ -16,11 +16,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\QuoteRepo.Entities\QuoteRepo.Entities.csproj" />
-		<Using Include="System.Linq.Expressions"/>
-		<Using Include="Microsoft.EntityFrameworkCore"/>
-		<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders"/>
-		<Using Include="QuoteRepo.Entities.Core"/>
+	  <ProjectReference Include="..\QuoteRepo.Core\QuoteRepo.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System.Linq.Expressions" />
+		<Using Include="Microsoft.EntityFrameworkCore" />
+		<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
 </ItemGroup>
 
 </Project>

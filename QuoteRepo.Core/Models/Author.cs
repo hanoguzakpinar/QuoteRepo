@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Entities.Core
+﻿namespace QuoteRepo.Core.Models
 {
     public class Author
     {
@@ -10,7 +10,6 @@
         public List<Quote> Quotes { get; set; }
         public Author()
         {
-            Country = new Country();
             Quotes = new List<Quote>();
         }
     }
