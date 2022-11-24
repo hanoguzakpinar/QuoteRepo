@@ -1,4 +1,4 @@
-global using IResult = QuoteRepo.Shared.Results.IResult;
+global using IResult = QuoteRepo.Core.Results.IResult;
 
 var builder = WebApplication.CreateBuilder(args);
 

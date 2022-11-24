@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Shared.Results
+﻿namespace QuoteRepo.Core.Results
 {
     public interface IDataResult<out T> : IResult
     {

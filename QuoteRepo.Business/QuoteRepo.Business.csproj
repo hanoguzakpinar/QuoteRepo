@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -13,14 +13,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\QuoteRepo.Data\QuoteRepo.Data.csproj" />
-	  <ProjectReference Include="..\QuoteRepo.Shared\QuoteRepo.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Using Include="AutoMapper" />
 		<Using Include="QuoteRepo.Business.Abstract" />
 		<Using Include="QuoteRepo.Data.Abstract.Repositories" />
-		<Using Include="QuoteRepo.Shared.Results" />
+		<Using Include="QuoteRepo.Core.Results" />
 		<Using Include="QuoteRepo.Core.DTOs" />
 		<Using Include="QuoteRepo.Core.Models" />
 	</ItemGroup>

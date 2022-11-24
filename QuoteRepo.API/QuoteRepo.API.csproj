@@ -52,8 +52,8 @@
 		<Using Include="QuoteRepo.Data.Abstract.Repositories" />
 		<Using Include="QuoteRepo.Data.Concrete.Contexts" />
 		<Using Include="QuoteRepo.Data.Concrete.Repositories" />
-		<Using Include="QuoteRepo.Shared.Results" />
-		<Using Include="QuoteRepo.Shared.Utils" />
+		<Using Include="QuoteRepo.Core.Results" />
+		<Using Include="QuoteRepo.Core.Utils" />
 		<Using Include="System.Reflection" />
 		<Using Include="QuoteRepo.API.Profiles" />
 	</ItemGroup>
