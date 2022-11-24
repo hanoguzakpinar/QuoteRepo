@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Business.Abstract
+﻿namespace QuoteRepo.Core.Services
 {
     public interface IQuoteService
     {

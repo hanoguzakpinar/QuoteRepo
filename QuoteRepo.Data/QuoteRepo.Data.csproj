@@ -23,6 +23,10 @@
 		<Using Include="System.Linq.Expressions" />
 		<Using Include="Microsoft.EntityFrameworkCore" />
 		<Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
-</ItemGroup>
+		<Using Include="QuoteRepo.Core.Repositories" />
+		<Using Include="QuoteRepo.Core.Models" />
+		<Using Include="QuoteRepo.Data.Concrete.Contexts" />
+		<Using Include="QuoteRepo.Data.Concrete.Mappings" />
+	</ItemGroup>
 
 </Project>

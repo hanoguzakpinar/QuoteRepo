@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Data.Abstract.Repositories
+﻿namespace QuoteRepo.Core.Repositories
 {
     public interface IRepository<T> where T : class, new()
     {

@@ -8,13 +8,13 @@
 
 	<ItemGroup>
 		<Folder Include="UnitOfWorks\" />
-		<Folder Include="Services\" />
-		<Folder Include="Repositories\" />
 		<Folder Include="Models\" />
 		<Folder Include="DTOs\" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
-		<Using Include="FluentValidation.Results"/>
-		<Using Include="QuoteRepo.Core.Results"/>
+		<Using Include="FluentValidation.Results" />
+		<Using Include="QuoteRepo.Core.Results" />
+		<Using Include="System.Linq.Expressions" />
+		<Using Include="QuoteRepo.Core.DTOs" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
 global using IResult = QuoteRepo.Core.Results.IResult;
+using QuoteRepo.Core.Repositories;
+using QuoteRepo.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

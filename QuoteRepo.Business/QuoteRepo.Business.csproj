@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
@@ -17,8 +17,6 @@
 
 	<ItemGroup>
 		<Using Include="AutoMapper" />
-		<Using Include="QuoteRepo.Business.Abstract" />
-		<Using Include="QuoteRepo.Data.Abstract.Repositories" />
 		<Using Include="QuoteRepo.Core.Results" />
 		<Using Include="QuoteRepo.Core.DTOs" />
 		<Using Include="QuoteRepo.Core.Models" />

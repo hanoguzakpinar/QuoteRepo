@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
+﻿using QuoteRepo.Core.Services;
+
+namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
     public class GetAllQuotesQueryHandler : IRequestHandler<GetAllQuotesQueryRequest, IDataResult<IList<QuoteDto>>>
     {

@@ -1,7 +1,4 @@
-﻿using QuoteRepo.Core.Models;
-using QuoteRepo.Data.Concrete.Mappings;
-
-namespace QuoteRepo.Data.Concrete.Contexts
+﻿namespace QuoteRepo.Data.Concrete.Contexts
 {
     public class QuoteContext : DbContext
     {

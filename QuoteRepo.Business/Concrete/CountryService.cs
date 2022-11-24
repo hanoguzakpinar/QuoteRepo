@@ -1,4 +1,7 @@
-﻿namespace QuoteRepo.Business.Concrete
+﻿using QuoteRepo.Core.Repositories;
+using QuoteRepo.Core.Services;
+
+namespace QuoteRepo.Business.Concrete
 {
     public class CountryService : ICountryService
     {

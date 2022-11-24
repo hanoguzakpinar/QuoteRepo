@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿using QuoteRepo.Core.Services;
+
+namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommandRequest, IResult>
     {

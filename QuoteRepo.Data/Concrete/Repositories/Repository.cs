@@ -1,7 +1,4 @@
-﻿using QuoteRepo.Data.Abstract.Repositories;
-using QuoteRepo.Data.Concrete.Contexts;
-
-namespace QuoteRepo.Data.Concrete.Repositories
+﻿namespace QuoteRepo.Data.Concrete.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, new()
     {

@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
+﻿using QuoteRepo.Core.Services;
+
+namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
     public class UpdateQuoteCommandHandler : IRequestHandler<UpdateQuoteCommandRequest, IResult>
     {
