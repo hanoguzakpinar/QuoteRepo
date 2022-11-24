@@ -44,12 +44,12 @@
 		<Using Include="QuoteRepo.API.CQRS.Queries.AuthorQueries" />
 		<Using Include="QuoteRepo.API.CQRS.Queries.CountryQueries" />
 		<Using Include="QuoteRepo.API.CQRS.Queries.QuoteQueries" />
-		<Using Include="QuoteRepo.Business.Concrete" />
+		<Using Include="QuoteRepo.Business.Services" />
 		<Using Include="QuoteRepo.Business.Profiles" />
 		<Using Include="QuoteRepo.Core.DTOs" />
 		<Using Include="QuoteRepo.Core.Models" />
-		<Using Include="QuoteRepo.Data.Concrete.Contexts" />
-		<Using Include="QuoteRepo.Data.Concrete.Repositories" />
+		<Using Include="QuoteRepo.Data.Contexts" />
+		<Using Include="QuoteRepo.Data.Repositories" />
 		<Using Include="QuoteRepo.Core.Results" />
 		<Using Include="QuoteRepo.Core.Utils" />
 		<Using Include="System.Reflection" />

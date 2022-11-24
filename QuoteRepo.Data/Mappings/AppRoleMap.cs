@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Data.Concrete.Mappings
+﻿namespace QuoteRepo.Data.Mappings
 {
     public class AppRoleMap : IEntityTypeConfiguration<AppRole>
     {

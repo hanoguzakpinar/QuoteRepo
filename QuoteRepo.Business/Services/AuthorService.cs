@@ -1,7 +1,4 @@
-﻿using QuoteRepo.Core.Repositories;
-using QuoteRepo.Core.Services;
-
-namespace QuoteRepo.Business.Concrete
+﻿namespace QuoteRepo.Business.Services
 {
     public class AuthorService : IAuthorService
     {

@@ -20,6 +20,8 @@
 		<Using Include="QuoteRepo.Core.Results" />
 		<Using Include="QuoteRepo.Core.DTOs" />
 		<Using Include="QuoteRepo.Core.Models" />
+		<Using Include="QuoteRepo.Core.Repositories" />
+		<Using Include="QuoteRepo.Core.Services" />
 	</ItemGroup>
 
 </Project>

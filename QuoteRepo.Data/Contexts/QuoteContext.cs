@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Data.Concrete.Contexts
+﻿namespace QuoteRepo.Data.Contexts
 {
     public class QuoteContext : DbContext
     {

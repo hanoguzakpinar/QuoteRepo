@@ -1,4 +1,4 @@
-﻿namespace QuoteRepo.Data.Concrete.Repositories
+﻿namespace QuoteRepo.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, new()
     {
