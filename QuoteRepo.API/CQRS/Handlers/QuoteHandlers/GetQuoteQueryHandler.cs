@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
-    public class GetQuoteQueryHandler : IRequestHandler<GetQuoteQueryRequest, IDataResult<QuoteDto>>
+    /*public class GetQuoteQueryHandler : IRequestHandler<GetQuoteQueryRequest, Result<QuoteDto>>
     {
         private readonly IQuoteService _quoteService;
 
@@ -11,14 +11,14 @@ namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
             _quoteService = quoteService;
         }
 
-        public async Task<IDataResult<QuoteDto>> Handle(GetQuoteQueryRequest request, CancellationToken cancellationToken)
+        public async Task<Result<QuoteDto>> Handle(GetQuoteQueryRequest request, CancellationToken cancellationToken)
         {
             GetQuoteQueryValidator validator = new();
             var valResult = await validator.ValidateAsync(request, cancellationToken);
             if (valResult.Errors.Count > 0)
-                return new DataResult<QuoteDto>(ResultStatus.Error, errors: valResult.Errors);
+                return Result<QuoteDto>.Fail(404, "XXX");
 
             return await _quoteService.GetAsync(request.Id);
         }
-    }
+    }*/
 }

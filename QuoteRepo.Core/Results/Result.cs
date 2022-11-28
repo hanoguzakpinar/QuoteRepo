@@ -1,21 +1,28 @@
-﻿namespace QuoteRepo.Core.Results
+﻿using System.Text.Json.Serialization;
+
+namespace QuoteRepo.Core.Results
 {
-    public class Result : IResult
+    public class Result<T>
     {
-        public Result(ResultStatus resultStatus, string message)
+        [JsonIgnore]
+        public int StatusCode { get; set; }
+        public T Data { get; set; }
+        public List<string> Errors { get; set; }
+        public static Result<T> Success(int statusCode, T data)
         {
-            ResultStatus = resultStatus;
-            Message = message;
+            return new Result<T> { Data = data, StatusCode = statusCode };
         }
-
-        public Result(ResultStatus resultStatus, List<ValidationFailure> errors)
+        public static Result<T> Success(int statusCode)
         {
-            ResultStatus = resultStatus;
-            Errors = errors;
+            return new Result<T> { StatusCode = statusCode };
         }
-
-        public ResultStatus ResultStatus { get; }
-        public string? Message { get; }
-        public List<ValidationFailure> Errors { get; }
+        public static Result<T> Fail(int statusCode, List<string> errors)
+        {
+            return new Result<T> { Errors = errors, StatusCode = statusCode };
+        }
+        public static Result<T> Fail(int statusCode, string error)
+        {
+            return new Result<T> { Errors = new List<string> { error }, StatusCode = statusCode };
+        }
     }
 }

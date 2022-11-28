@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
-    public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IResult>
+    /*public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IResult>
     {
         private readonly ICountryService _countryService;
 
@@ -20,5 +20,5 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 
             return await _countryService.DeleteAsync(request.Id);
         }
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandRequest, IResult>
+    /*public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandRequest, IResult>
     {
         private readonly IAuthorService _authorService;
 
@@ -20,5 +20,5 @@ namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 
             return await _authorService.DeleteAsync(request.Id);
         }
-    }
+    }*/
 }

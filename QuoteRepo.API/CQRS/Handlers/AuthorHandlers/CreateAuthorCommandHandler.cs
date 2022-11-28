@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, IResult>
+    /*public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, AuthorDto>
     {
         private readonly IAuthorService _authorService;
         private readonly IMapper _mapper;
@@ -22,5 +22,5 @@ namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 
             return await _authorService.CreateAsync(_mapper.Map<CreateAuthorDto>(request));
         }
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQueryRequest, IDataResult<IList<AuthorDto>>>
+    /*public class GetAllAuthorsQueryHandler : IRequestHandler<GetAllAuthorsQueryRequest, Result<IList<AuthorDto>>>
     {
         private readonly IAuthorService _authorService;
 
@@ -11,9 +11,9 @@ namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
             _authorService = authorService;
         }
 
-        public async Task<IDataResult<IList<AuthorDto>>> Handle(GetAllAuthorsQueryRequest request, CancellationToken cancellationToken)
+        public async Task<Result<IList<AuthorDto>>> Handle(GetAllAuthorsQueryRequest request, CancellationToken cancellationToken)
         {
             return await _authorService.GetAllAsync();
         }
-    }
+    }*/
 }

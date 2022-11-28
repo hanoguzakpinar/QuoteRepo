@@ -1,12 +1,12 @@
-﻿namespace QuoteRepo.Core.Repositories
+﻿namespace QuoteRepo.Core.Services
 {
-    public interface IRepository<T> where T : class
+    public interface IService<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
-        IQueryable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        Task AddAsync(T entity);
+        Task<T> AddAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<int> CountAsync(Expression<Func<T, bool>> expression);

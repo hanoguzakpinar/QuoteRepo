@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
-    public class CreateQuoteCommandHandler : IRequestHandler<CreateQuoteCommandRequest, IResult>
+    /*public class CreateQuoteCommandHandler : IRequestHandler<CreateQuoteCommandRequest, IResult>
     {
         private readonly IQuoteService _quoteService;
         private readonly IMapper _mapper;
@@ -22,5 +22,5 @@ namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 
             return await _quoteService.CreateAsync(_mapper.Map<CreateQuoteDto>(request));
         }
-    }
+    }*/
 }

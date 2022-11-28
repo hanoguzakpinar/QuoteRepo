@@ -1,12 +1,8 @@
-﻿namespace QuoteRepo.Core.Services
+﻿using QuoteRepo.Core.Models;
+
+namespace QuoteRepo.Core.Services
 {
-    public interface IAuthorService
+    public interface IAuthorService : IService<Author>
     {
-        Task<IDataResult<IList<AuthorDto>>> GetAllAsync();
-        Task<IDataResult<AuthorDto>> GetAsync(int id);
-        Task<IResult> CreateAsync(CreateAuthorDto entity);
-        Task<IResult> UpdateAsync(UpdateAuthorDto entity);
-        Task<IResult> DeleteAsync(int id);
-        Task<bool> AnyAsync(int id);
     }
 }

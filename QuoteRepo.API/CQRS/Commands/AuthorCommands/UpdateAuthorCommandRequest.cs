@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Commands.AuthorCommands
 {
-    public class UpdateAuthorCommandRequest : IRequest<IResult>
+    public class UpdateAuthorCommandRequest : IRequest<AuthorDto>
     {
         public int Id { get; set; }
         public string? FullName { get; set; }

@@ -3,72 +3,52 @@
     public class Repository<T> : IRepository<T> where T : class, new()
     {
         private readonly QuoteContext _context;
+        private readonly DbSet<T> _dbSet;
 
         public Repository(QuoteContext context)
         {
             _context = context;
+            _dbSet = context.Set<T>();
         }
 
-        public async Task<T> AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);
-            //_context.Entry(entity).State = EntityState.Added;
-            await _context.SaveChangesAsync();
-            return entity;
+            await _dbSet.AddAsync(entity);
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().AnyAsync(predicate);
+            return await _dbSet.AnyAsync(predicate);
         }
 
-        public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate)
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate)
         {
-            return await (predicate == null ? _context.Set<T>().CountAsync() : _context.Set<T>().CountAsync(predicate));
+            return await (predicate == null ? _dbSet.CountAsync() : _dbSet.CountAsync(predicate));
         }
 
         public async Task DeleteAsync(T entity)
         {
-            await Task.Run(() => { _context.Set<T>().Remove(entity); });
-            await _context.SaveChangesAsync();
+            await Task.Run(() => { _dbSet.Remove(entity); });
         }
 
-        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, params Expression<Func<T, object>>[] includeProps)
+        public IQueryable<T> GetAll()
         {
-            IQueryable<T> query = _context.Set<T>();
-            if (predicate is not null)
-                query = query.Where(predicate);
-
-            if (includeProps.Any())
-            {
-                foreach (var prop in includeProps)
-                {
-                    query = query.Include(prop);
-                }
-            }
-            return await query.ToListAsync();
+            return _dbSet.AsNoTracking().AsQueryable();
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProps)
+        public async Task<T> GetByIdAsync(int id)
         {
-            IQueryable<T> query = _context.Set<T>();
-            query = query.Where(predicate);
-
-            if (includeProps.Any())
-            {
-                foreach (var prop in includeProps)
-                {
-                    query = query.Include(prop);
-                }
-            }
-            return await query.SingleOrDefaultAsync();
+            return await _dbSet.FindAsync(id);
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            await Task.Run(() => { _context.Set<T>().Update(entity); });
-            await _context.SaveChangesAsync();
-            return entity;
+            await Task.Run(() => { _dbSet.Update(entity); });
+        }
+
+        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
+        {
+            return _dbSet.Where(expression);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
-    public class DeleteQuoteCommandHandler : IRequestHandler<DeleteQuoteCommandRequest, IResult>
+    /*public class DeleteQuoteCommandHandler : IRequestHandler<DeleteQuoteCommandRequest, IResult>
     {
         private readonly IQuoteService _quoteService;
         private readonly IMapper _mapper;
@@ -22,5 +22,5 @@ namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 
             return await _quoteService.DeleteAsync(request.Id);
         }
-    }
+    }*/
 }

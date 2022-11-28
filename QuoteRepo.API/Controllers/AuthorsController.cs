@@ -16,12 +16,12 @@
         {
             var result = await _mediator.Send(new GetAllAuthorsQueryRequest());
 
-            if (result.ResultStatus == ResultStatus.Success)
+            /*if (result.StatusCode == 2)
             {
                 return Ok(result.Data);
-            }
+            }*/
 
-            return BadRequest(Utility.ReturnErrors(result));
+            return BadRequest(/*Utility.ReturnErrors(result)*/);
         }
 
         [HttpGet("{id}")]
@@ -29,12 +29,12 @@
         {
             var result = await _mediator.Send(new GetAuthorQueryRequest(id));
 
-            if (result.ResultStatus == ResultStatus.Success)
+            /*if (result.StatusCode == ResultStatus.Success)
             {
                 return Ok(result.Data);
-            }
+            }*/
 
-            return BadRequest(Utility.ReturnErrors(result));
+            return BadRequest(/*Utility.ReturnErrors(result)*/);
         }
 
         [HttpDelete("{id}")]
@@ -42,12 +42,12 @@
         {
             var result = await _mediator.Send(new DeleteAuthorCommandRequest(id));
 
-            if (result.ResultStatus == ResultStatus.Success)
+            /*if (result.StatusCode == ResultStatus.Success)
             {
                 return Ok(result);
-            }
+            }*/
 
-            return BadRequest(Utility.ReturnErrors(result));
+            return BadRequest(/*Utility.ReturnErrors(result)*/);
         }
 
         [HttpPost]
@@ -55,12 +55,12 @@
         {
             var result = await _mediator.Send(request);
 
-            if (result.ResultStatus == ResultStatus.Success)
+           /* if (result.StatusCode == ResultStatus.Success)
             {
                 return Ok(result);
-            }
+            }*/
 
-            return BadRequest(Utility.ReturnErrors(result));
+            return BadRequest(/*Utility.ReturnErrors(result)*/);
         }
 
         [HttpPut]
@@ -68,12 +68,12 @@
         {
             var result = await _mediator.Send(request);
 
-            if (result.ResultStatus == ResultStatus.Success)
+            /*if (result.StatusCode == ResultStatus.Success)
             {
                 return Ok(result);
-            }
+            }*/
 
-            return BadRequest(Utility.ReturnErrors(result));
+            return BadRequest(/*Utility.ReturnErrors(result)*/);
         }
     }
 }

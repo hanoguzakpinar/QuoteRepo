@@ -1,6 +1,8 @@
-global using IResult = QuoteRepo.Core.Results.IResult;
+using QuoteRepo.Business.Services;
 using QuoteRepo.Core.Repositories;
 using QuoteRepo.Core.Services;
+using QuoteRepo.Core.UnitOfWorks;
+using QuoteRepo.Data.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +28,12 @@ builder.Services.AddDbContext<QuoteContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Belbim"));
 });
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IQuoteService, QuoteService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(opt =>
 {

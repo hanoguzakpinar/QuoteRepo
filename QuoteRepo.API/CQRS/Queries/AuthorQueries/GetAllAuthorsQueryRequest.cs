@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Queries.AuthorQueries
 {
-    public class GetAllAuthorsQueryRequest : IRequest<IDataResult<IList<AuthorDto>>>
+    public class GetAllAuthorsQueryRequest : IRequest<Result<IList<AuthorDto>>>
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
-    public class UpdateCountryCommand : IRequestHandler<UpdateCountryCommandRequest, IResult>
+    /*public class UpdateCountryCommand : IRequestHandler<UpdateCountryCommandRequest, IResult>
     {
         private readonly ICountryService _countryService;
         private readonly IMapper _mapper;
@@ -22,5 +22,5 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 
             return await _countryService.UpdateAsync(_mapper.Map<CountryDto>(request));
         }
-    }
+    }*/
 }
