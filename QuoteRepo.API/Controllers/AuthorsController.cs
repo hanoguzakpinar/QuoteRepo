@@ -1,8 +1,6 @@
 ﻿namespace QuoteRepo.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthorsController : ControllerBase
+    public class AuthorsController : MainController
     {
         private readonly IMediator _mediator;
 
@@ -55,10 +53,10 @@
         {
             var result = await _mediator.Send(request);
 
-           /* if (result.StatusCode == ResultStatus.Success)
-            {
-                return Ok(result);
-            }*/
+            /* if (result.StatusCode == ResultStatus.Success)
+             {
+                 return Ok(result);
+             }*/
 
             return BadRequest(/*Utility.ReturnErrors(result)*/);
         }

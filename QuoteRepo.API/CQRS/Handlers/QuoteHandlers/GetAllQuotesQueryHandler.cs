@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Core.Services;
-
-namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
     /*public class GetAllQuotesQueryHandler : IRequestHandler<GetAllQuotesQueryRequest, Result<IList<QuoteDto>>>
     {

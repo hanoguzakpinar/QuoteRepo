@@ -1,8 +1,6 @@
-﻿using QuoteRepo.Core.Services;
-
-namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
-    /*public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, IResult>
+    public class DeleteCountryCommandHandler : IRequestHandler<DeleteCountryCommandRequest, Result<NoContentDto>>
     {
         private readonly ICountryService _countryService;
 
@@ -11,14 +9,11 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
             _countryService = countryService;
         }
 
-        public async Task<IResult> Handle(DeleteCountryCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<NoContentDto>> Handle(DeleteCountryCommandRequest request, CancellationToken cancellationToken)
         {
-            DeleteCountryCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request, cancellationToken);
-            if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-
-            return await _countryService.DeleteAsync(request.Id);
+            var category = await _countryService.GetByIdAsync(request.Id);
+            await _countryService.DeleteAsync(category);
+            return Result<NoContentDto>.Success(204);
         }
-    }*/
+    }
 }

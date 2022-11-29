@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Core.Services;
-
-namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
     /*public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandRequest, IResult>
     {

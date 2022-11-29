@@ -1,8 +1,6 @@
-﻿using QuoteRepo.Core.Services;
-
-namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
-    /*public class UpdateCountryCommand : IRequestHandler<UpdateCountryCommandRequest, IResult>
+    public class UpdateCountryCommand : IRequestHandler<UpdateCountryCommandRequest, Result<NoContentDto>>
     {
         private readonly ICountryService _countryService;
         private readonly IMapper _mapper;
@@ -13,14 +11,11 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
             _mapper = mapper;
         }
 
-        public async Task<IResult> Handle(UpdateCountryCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<NoContentDto>> Handle(UpdateCountryCommandRequest request, CancellationToken cancellationToken)
         {
-            UpdateCountryCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request, cancellationToken);
-            if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-
-            return await _countryService.UpdateAsync(_mapper.Map<CountryDto>(request));
+            var mapped = _mapper.Map<Country>(request);
+            await _countryService.UpdateAsync(mapped);
+            return Result<NoContentDto>.Success(204);
         }
-    }*/
+    }
 }

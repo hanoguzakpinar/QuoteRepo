@@ -1,7 +1,4 @@
-﻿using QuoteRepo.Core.Services;
-using System.Collections.Generic;
-
-namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 {
     public class GetAllCountriesQueryHandler : IRequestHandler<GetAllCountriesQueryRequest, Result<IList<CountryDto>>>
     {
@@ -16,8 +13,8 @@ namespace QuoteRepo.API.CQRS.Handlers.CountryHandlers
 
         public async Task<Result<IList<CountryDto>>> Handle(GetAllCountriesQueryRequest request, CancellationToken cancellationToken)
         {
-            var datas = await _countryService.GetAllAsync();
-            var mapped = _mapper.Map<IList<CountryDto>>(datas);
+            var categories = await _countryService.GetAllAsync();
+            var mapped = _mapper.Map<IList<CountryDto>>(categories);
             return Result<IList<CountryDto>>.Success(200, mapped);
         }
     }

@@ -1,6 +1,4 @@
-using QuoteRepo.Business.Services;
 using QuoteRepo.Core.Repositories;
-using QuoteRepo.Core.Services;
 using QuoteRepo.Core.UnitOfWorks;
 using QuoteRepo.Data.UnitOfWork;
 

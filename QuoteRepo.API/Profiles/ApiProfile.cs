@@ -5,6 +5,7 @@
         public ApiProfile()
         {
             CreateMap<CountryDto, CreateCountryCommandRequest>().ReverseMap();
+            CreateMap<Country, CreateCountryCommandRequest>().ReverseMap();
             CreateMap<CountryDto, UpdateCountryCommandRequest>().ReverseMap();
             CreateMap<CreateAuthorDto, CreateAuthorCommandRequest>().ReverseMap();
             CreateMap<UpdateAuthorDto, UpdateAuthorCommandRequest>().ReverseMap();

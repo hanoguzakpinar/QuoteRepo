@@ -54,6 +54,7 @@
 		<Using Include="QuoteRepo.Core.Utils" />
 		<Using Include="System.Reflection" />
 		<Using Include="QuoteRepo.API.Profiles" />
+		<Using Include="QuoteRepo.Core.Services" />
 	</ItemGroup>
 
 </Project>
