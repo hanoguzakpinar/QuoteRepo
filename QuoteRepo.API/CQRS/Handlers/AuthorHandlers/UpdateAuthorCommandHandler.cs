@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    /*public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommandRequest, AuthorDto>
+    public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommandRequest, Result<NoContentDto>>
     {
         private readonly IAuthorService _authorService;
         private readonly IMapper _mapper;
@@ -11,20 +11,10 @@
             _mapper = mapper;
         }
 
-        public Task<AuthorDto> Handle(UpdateAuthorCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<NoContentDto>> Handle(UpdateAuthorCommandRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _authorService.UpdateAsync(_mapper.Map<Author>(request));
+            return Result<NoContentDto>.Success(204);
         }
-
-
-        public async Task<CountryDto> Handle(UpdateAuthorCommandRequest request, CancellationToken cancellationToken)
-        {
-            UpdateAuthorCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request);
-            /*if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-            //await _authorService.UpdateAsync(_mapper.Map<UpdateAuthorDto>(request));
-            return new CountryDto();
-        }
-    }*/
+    }
 }

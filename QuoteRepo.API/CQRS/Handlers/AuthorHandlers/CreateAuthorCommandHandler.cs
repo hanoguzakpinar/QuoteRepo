@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    /*public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, AuthorDto>
+    public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, Result<CreateAuthorCommandRequest>>
     {
         private readonly IAuthorService _authorService;
         private readonly IMapper _mapper;
@@ -11,14 +11,10 @@
             _mapper = mapper;
         }
 
-        public async Task<IResult> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<CreateAuthorCommandRequest>> Handle(CreateAuthorCommandRequest request, CancellationToken cancellationToken)
         {
-            CreateAuthorCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request, cancellationToken);
-            if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-
-            return await _authorService.CreateAsync(_mapper.Map<CreateAuthorDto>(request));
+            var author = await _authorService.AddAsync(_mapper.Map<Author>(request));
+            return Result<CreateAuthorCommandRequest>.Success(201, request);
         }
-    }*/
+    }
 }

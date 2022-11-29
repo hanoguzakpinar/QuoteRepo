@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.Data.Contexts
+﻿using System.Reflection;
+
+namespace QuoteRepo.Data.Contexts
 {
     public class QuoteContext : DbContext
     {
@@ -12,11 +14,7 @@
         public DbSet<Quote> Quotes => Set<Quote>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new CountryMap());
-            modelBuilder.ApplyConfiguration(new AppRoleMap());
-            modelBuilder.ApplyConfiguration(new AppUserMap());
-            modelBuilder.ApplyConfiguration(new QuoteMap());
-            modelBuilder.ApplyConfiguration(new AuthorMap());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

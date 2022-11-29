@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
-    /*public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandRequest, IResult>
+    public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommandRequest, Result<NoContentDto>>
     {
         private readonly IAuthorService _authorService;
 
@@ -9,14 +9,11 @@
             _authorService = authorService;
         }
 
-        public async Task<IResult> Handle(DeleteAuthorCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<NoContentDto>> Handle(DeleteAuthorCommandRequest request, CancellationToken cancellationToken)
         {
-            DeleteAuthorCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request);
-            if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-
-            return await _authorService.DeleteAsync(request.Id);
+            var author = await _authorService.GetByIdAsync(request.Id);
+            await _authorService.DeleteAsync(author);
+            return Result<NoContentDto>.Success(204);
         }
-    }*/
+    }
 }
