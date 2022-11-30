@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Commands.QuoteCommands
 {
-    public class UpdateQuoteCommandRequest : IRequest<IResult>
+    public class UpdateQuoteCommandRequest : IRequest<Result<NoContentDto>>
     {
         public int Id { get; set; }
         public string? Text { get; set; }

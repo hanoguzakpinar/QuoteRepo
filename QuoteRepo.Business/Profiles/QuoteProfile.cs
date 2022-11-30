@@ -4,7 +4,7 @@
     {
         public QuoteProfile()
         {
-            CreateMap<Quote, QuoteDto>().ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.Author.FullName));
+            CreateMap<Quote, QuoteDto>().ReverseMap();
             CreateMap<Quote, CreateQuoteDto>().ReverseMap();
             CreateMap<Quote, UpdateQuoteDto>().ReverseMap();
         }

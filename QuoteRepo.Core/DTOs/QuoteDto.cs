@@ -3,7 +3,6 @@
     public class QuoteDto : BaseDto
     {
         public string? Text { get; set; }
-        //public int AuthorId { get; set; }
-        public string? Author { get; set; }
+        public int AuthorId { get; set; }
     }
 }

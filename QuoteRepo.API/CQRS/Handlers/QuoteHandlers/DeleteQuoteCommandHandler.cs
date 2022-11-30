@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Handlers.QuoteHandlers
 {
-    /*public class DeleteQuoteCommandHandler : IRequestHandler<DeleteQuoteCommandRequest, IResult>
+    public class DeleteQuoteCommandHandler : IRequestHandler<DeleteQuoteCommandRequest, Result<NoContentDto>>
     {
         private readonly IQuoteService _quoteService;
         private readonly IMapper _mapper;
@@ -11,14 +11,11 @@
             _mapper = mapper;
         }
 
-        public async Task<IResult> Handle(DeleteQuoteCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Result<NoContentDto>> Handle(DeleteQuoteCommandRequest request, CancellationToken cancellationToken)
         {
-            DeleteQuoteCommandValidator validator = new();
-            var valResult = await validator.ValidateAsync(request, cancellationToken);
-            if (valResult.Errors.Count > 0)
-                return new Result(ResultStatus.Error, errors: valResult.Errors);
-
-            return await _quoteService.DeleteAsync(request.Id);
+            var quote = await _quoteService.GetByIdAsync(request.Id);
+            await _quoteService.DeleteAsync(quote);
+            return Result<NoContentDto>.Success(204);
         }
-    }*/
+    }
 }

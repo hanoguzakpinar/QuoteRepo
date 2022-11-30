@@ -13,65 +13,35 @@
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllQuotesQueryRequest());
-
-            /*if (result.ResultStatus == ResultStatus.Success)
-            {
-                return Ok(result.Data);
-            }*/
-
-            return BadRequest(/*Utility.ReturnErrors(result)*/);
+            return CreateActionResult(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(new GetQuoteQueryRequest(id));
-
-            /* if (result.ResultStatus == ResultStatus.Success)
-             {
-                 return Ok(result.Data);
-             }*/
-
-            return BadRequest(/*Utility.ReturnErrors(result)*/);
+            return CreateActionResult(result);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateQuoteCommandRequest request)
         {
             var result = await _mediator.Send(request);
-
-            /*if (result.ResultStatus == ResultStatus.Success)
-            {
-                return Ok(result);
-            }*/
-
-            return BadRequest(/*Utility.ReturnErrors(result)*/);
+            return CreateActionResult(result);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update(UpdateQuoteCommandRequest request)
         {
             var result = await _mediator.Send(request);
-
-            /*if (result.ResultStatus == ResultStatus.Success)
-            {
-                return Ok(result);
-            }*/
-
-            return BadRequest(/*Utility.ReturnErrors(result)*/);
+            return CreateActionResult(result);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteQuoteCommandRequest request)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var result = await _mediator.Send(request);
-
-            /*if (result.ResultStatus == ResultStatus.Success)
-            {
-                return Ok(result);
-            }*/
-
-            return BadRequest(/*Utility.ReturnErrors(result)*/);
+            var result = await _mediator.Send(new DeleteQuoteCommandRequest(id));
+            return CreateActionResult(result);
         }
     }
 }

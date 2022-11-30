@@ -1,6 +1,6 @@
 ﻿namespace QuoteRepo.API.CQRS.Commands.QuoteCommands
 {
-    public class DeleteQuoteCommandRequest : IRequest<IResult>
+    public class DeleteQuoteCommandRequest : IRequest<Result<NoContentDto>>
     {
         public int Id { get; set; }
 
