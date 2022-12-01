@@ -1,3 +1,4 @@
+using QuoteRepo.API.Filters;
 using QuoteRepo.Core.Repositories;
 using QuoteRepo.Core.UnitOfWorks;
 using QuoteRepo.Data.UnitOfWork;
@@ -6,19 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddNewtonsoftJson(opt =>
+builder.Services.AddControllers(opt => opt.Filters.Add(new ValidateFilterAttribute()))
+    .AddNewtonsoftJson(opt =>
+    {
+        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    })
+    .AddFluentValidation(f => f.RegisterValidatorsFromAssemblyContaining<CreateQuoteCommandValidator>());
+builder.Services.Configure<ApiBehaviorOptions>(f =>
 {
-    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    f.SuppressModelStateInvalidFilter = true;
 });
-builder.Services.AddFluentValidation(opt =>
-{
-    // Other way to register validators
-    //opt.ImplicitlyValidateChildProperties = true;
-    //opt.ImplicitlyValidateRootCollectionElements = true;
-    //opt.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-    opt.RegisterValidatorsFromAssemblyContaining<Program>();
-});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
