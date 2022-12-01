@@ -1,8 +1,7 @@
 ﻿namespace QuoteRepo.Core.Models
 {
-    public class Author
+    public class Author : BaseEntity
     {
-        public int Id { get; set; }
         public string? FullName { get; set; }
         public DateTime BirthDate { get; set; }
         public int CountryId { get; set; }

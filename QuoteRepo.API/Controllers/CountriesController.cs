@@ -1,4 +1,6 @@
-﻿namespace QuoteRepo.API.Controllers
+﻿using QuoteRepo.API.Filters;
+
+namespace QuoteRepo.API.Controllers
 {
     public class CountriesController : MainController
     {
@@ -16,6 +18,7 @@
             return CreateActionResult(result);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Country>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -23,6 +26,7 @@
             return CreateActionResult(result);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Country>))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -37,6 +41,7 @@
             return CreateActionResult(result);
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Country>))]
         [HttpPut]
         public async Task<IActionResult> Update(UpdateCountryCommandRequest request)
         {

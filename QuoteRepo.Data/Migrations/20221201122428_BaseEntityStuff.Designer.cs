@@ -12,8 +12,8 @@ using QuoteRepo.Data.Contexts;
 namespace QuoteRepo.Data.Migrations
 {
     [DbContext(typeof(QuoteContext))]
-    [Migration("20221124114757_Initial")]
-    partial class Initial
+    [Migration("20221201122428_BaseEntityStuff")]
+    partial class BaseEntityStuff
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

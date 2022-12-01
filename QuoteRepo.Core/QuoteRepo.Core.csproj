@@ -7,7 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Models\" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.1.0" />
 		<Using Include="FluentValidation.Results" />
 		<Using Include="QuoteRepo.Core.Results" />

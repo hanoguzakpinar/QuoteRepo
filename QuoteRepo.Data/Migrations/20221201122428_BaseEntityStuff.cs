@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace QuoteRepo.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class BaseEntityStuff : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
