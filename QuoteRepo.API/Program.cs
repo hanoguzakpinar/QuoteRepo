@@ -35,16 +35,7 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IQuoteService, QuoteService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddAutoMapper(opt =>
-{
-    opt.AddProfiles(new List<Profile>()
-    {
-        new ApiProfile(),
-        new CountryProfile(),
-        new AuthorProfile(),
-        new QuoteProfile()
-    });
-});
+builder.Services.AddAutoMapper(typeof(ApiProfile), typeof(BusinessProfile));
 
 
 
