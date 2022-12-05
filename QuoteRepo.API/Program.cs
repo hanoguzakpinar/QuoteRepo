@@ -1,4 +1,5 @@
 using QuoteRepo.API.Filters;
+using QuoteRepo.API.Middlewares;
 using QuoteRepo.Core.Repositories;
 using QuoteRepo.Core.UnitOfWorks;
 using QuoteRepo.Data.UnitOfWork;
@@ -49,6 +50,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException();
 
 app.UseAuthorization();
 
