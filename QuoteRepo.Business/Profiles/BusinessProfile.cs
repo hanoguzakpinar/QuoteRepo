@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QuoteRepo.Business.Profiles
+﻿namespace QuoteRepo.Business.Profiles
 {
     public class BusinessProfile : Profile
     {

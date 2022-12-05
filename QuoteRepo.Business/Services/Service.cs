@@ -46,8 +46,6 @@ namespace QuoteRepo.Business.Services
         public async Task<T> GetByIdAsync(int id)
         {
             var hasEntity = await _repository.GetByIdAsync(id);
-            if (hasEntity == null)
-                throw new Exception($"{typeof(T).Name}({id}) not found.");//düzelt NotFoundException olarak
             return hasEntity;
         }
 
