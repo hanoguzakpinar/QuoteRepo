@@ -2,7 +2,7 @@
 {
     public class Repository<T> : IRepository<T> where T : class, new()
     {
-        private readonly QuoteContext _context;
+        protected readonly QuoteContext _context;
         private readonly DbSet<T> _dbSet;
 
         public Repository(QuoteContext context)

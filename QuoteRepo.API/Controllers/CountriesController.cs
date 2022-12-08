@@ -46,5 +46,13 @@
             var result = await _mediator.Send(request);
             return CreateActionResult(result);
         }
+
+        [ServiceFilter(typeof(NotFoundFilter<Country>))]
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetCountryWithAuthors(int id)
+        {
+            var result = await _mediator.Send(new GetCountryWithAuthorsQueryRequest(id));
+            return CreateActionResult(result);
+        }
     }
 }
