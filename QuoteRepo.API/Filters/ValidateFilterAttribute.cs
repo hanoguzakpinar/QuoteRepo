@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-
-namespace QuoteRepo.API.Filters
+﻿namespace QuoteRepo.API.Filters
 {
     public class ValidateFilterAttribute : ActionFilterAttribute
     {

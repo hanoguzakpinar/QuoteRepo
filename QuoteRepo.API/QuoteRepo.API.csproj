@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="CQRS\Results\**" />
-	  <Content Remove="CQRS\Results\**" />
-	  <EmbeddedResource Remove="CQRS\Results\**" />
-	  <None Remove="CQRS\Results\**" />
+		<Compile Remove="CQRS\Results\**" />
+		<Content Remove="CQRS\Results\**" />
+		<EmbeddedResource Remove="CQRS\Results\**" />
+		<None Remove="CQRS\Results\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -54,6 +54,11 @@
 		<Using Include="System.Reflection" />
 		<Using Include="QuoteRepo.API.Profiles" />
 		<Using Include="QuoteRepo.Core.Services" />
+		<Using Include="QuoteRepo.API.Filters"/>
+		<Using Include="Microsoft.AspNetCore.Mvc.Filters"/>
+		<Using Include="Microsoft.AspNetCore.Diagnostics"/>
+		<Using Include="QuoteRepo.Business.Exceptions"/>
+		<Using Include="System.Text.Json"/>
 	</ItemGroup>
 
 </Project>

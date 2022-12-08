@@ -1,4 +1,3 @@
-using QuoteRepo.API.Filters;
 using QuoteRepo.API.Middlewares;
 using QuoteRepo.Core.Repositories;
 using QuoteRepo.Core.UnitOfWorks;

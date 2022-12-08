@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Business.Exceptions;
-
-namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
+﻿namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
 {
     public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommandRequest, Result<CreateAuthorCommandRequest>>
     {
@@ -19,7 +17,7 @@ namespace QuoteRepo.API.CQRS.Handlers.AuthorHandlers
         {
             var hasEntity = _countryService.AnyAsync(x => x.Id == request.CountryId);
             if (!hasEntity.Result)
-                throw new NotFoundException("Bulunamadı.");
+                throw new NotFoundException(Message.NotFound<Country>(request.CountryId));
 
             var author = await _authorService.AddAsync(_mapper.Map<Author>(request));
             return Result<CreateAuthorCommandRequest>.Success(201, request);

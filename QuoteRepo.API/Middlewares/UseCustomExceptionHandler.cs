@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using QuoteRepo.Business.Exceptions;
-using System.Text.Json;
-
-namespace QuoteRepo.API.Middlewares
+﻿namespace QuoteRepo.API.Middlewares
 {
     public static class UseCustomExceptionHandler
     {

@@ -1,6 +1,4 @@
-﻿using QuoteRepo.API.Filters;
-
-namespace QuoteRepo.API.Controllers
+﻿namespace QuoteRepo.API.Controllers
 {
     public class AuthorsController : MainController
     {
