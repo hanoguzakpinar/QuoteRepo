@@ -1,6 +1,4 @@
-﻿using QuoteRepo.Core.Models;
-
-namespace QuoteRepo.Core.Repositories
+﻿namespace QuoteRepo.Core.Repositories
 {
     public interface ICountryRepository : IRepository<Country>
     {

@@ -46,5 +46,13 @@
             var result = await _mediator.Send(request);
             return CreateActionResult(result);
         }
+
+        [ServiceFilter(typeof(NotFoundFilter<Author>))]
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetAuthorWithQuotes(int id)
+        {
+            var result = await _mediator.Send(new GetAuthorWithQuotesQueryRequest(id));
+            return CreateActionResult(result);
+        }
     }
 }

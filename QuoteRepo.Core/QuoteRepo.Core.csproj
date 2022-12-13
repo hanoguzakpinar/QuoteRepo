@@ -12,6 +12,7 @@
 		<Using Include="QuoteRepo.Core.Results" />
 		<Using Include="System.Linq.Expressions" />
 		<Using Include="QuoteRepo.Core.DTOs" />
+		<Using Include="QuoteRepo.Core.Models"/>
 	</ItemGroup>
 
 </Project>

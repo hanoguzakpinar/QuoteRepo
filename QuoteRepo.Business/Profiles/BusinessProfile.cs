@@ -5,6 +5,7 @@
         public BusinessProfile()
         {
             CreateMap<Author, AuthorDto>().ReverseMap();
+            CreateMap<Author, AuthorWithQuotesDto>().ReverseMap();
             CreateMap<Author, CreateAuthorDto>().ReverseMap();
             CreateMap<Author, UpdateAuthorDto>().ReverseMap();
             CreateMap<CountryDto, Country>().ReverseMap();

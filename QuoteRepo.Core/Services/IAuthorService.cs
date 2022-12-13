@@ -1,8 +1,7 @@
-﻿using QuoteRepo.Core.Models;
-
-namespace QuoteRepo.Core.Services
+﻿namespace QuoteRepo.Core.Services
 {
     public interface IAuthorService : IService<Author>
     {
+        Task<Result<AuthorWithQuotesDto>> GetAuthorWithQuotes(int authorId);
     }
 }
